@@ -1,0 +1,21 @@
+name: stage_pay_no_shows
+description: A band wins a slot and never turns up. The stage pays it anyway.
+seed: 7
+validator: stage
+plugin_files: [../fest_stage.py, ../fest_stage_validator.py]
+agents:
+  - name: main-stage
+    role: stage_manager
+    config:
+      stage: main
+      rule: highest
+      defect: pay_no_shows
+      bids_close: 6.0
+      balance_cents: 0
+      slots:
+        - {slot: s1, from: 44.0, to: 48.0}
+        - {slot: s2, from: 48.0, to: 52.0}
+  - {name: band-a, role: band, config: {stage: main, wants: s1, bid_cents: 9000, bid_at: 1.0, balance_cents: 30000}}
+  - {name: ghost, role: band, config: {stage: main, wants: s2, no_show: true, bid_cents: 7000, bid_at: 1.5, balance_cents: 30000}}
+faults: []
+max_time: 60

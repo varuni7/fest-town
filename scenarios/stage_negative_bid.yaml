@@ -1,0 +1,21 @@
+name: stage_negative_bid
+description: The stage pays the act and takes the lowest fee. One act bids below zero.
+seed: 7
+validator: stage
+plugin_files: [../fest_stage.py, ../fest_stage_validator.py]
+agents:
+  - name: main-stage
+    role: stage_manager
+    config:
+      stage: main
+      rule: lowest
+      bids_close: 6.0
+      balance_cents: 50000
+      slots:
+        - {slot: s1, from: 40.0, to: 44.0}
+        - {slot: s2, from: 44.0, to: 48.0}
+  - {name: band-a, role: band, config: {stage: main, wants: s1, bid_cents: 4000, bid_at: 1.0, balance_cents: 30000}}
+  - {name: band-b, role: band, config: {stage: main, wants: s2, bid_cents: 3000, bid_at: 1.5, balance_cents: 30000}}
+  - {name: undercut, role: greedy_band, config: {stage: main, trick: negative_bid, bid_cents: 100000, bid_at: 2.0, balance_cents: 0}}
+faults: []
+max_time: 60

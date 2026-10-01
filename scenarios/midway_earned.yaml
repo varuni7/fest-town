@@ -25,13 +25,13 @@ agents:
     config: {kind: bakes, category: food, price_cents: 80, stock: 120, quality: 0.35, balance_cents: 0}
   - name: box-concert-1
     role: box_office
-    config: {show: concert-1, capacity: 40, price_cents: 1500, sale_from: 0.0, sale_to: 15.0, balance_cents: 0}
+    config: {show: concert-1, capacity: 40, price_cents: 1500, sale_from: 0.0, sale_to: 15.0, refund_until: 30.0, balance_cents: 0}
   - name: box-concert-2
     role: box_office
-    config: {show: concert-2, capacity: 40, price_cents: 1200, sale_from: 0.0, sale_to: 15.0, balance_cents: 0}
+    config: {show: concert-2, capacity: 40, price_cents: 1200, sale_from: 0.0, sale_to: 15.0, refund_until: 30.0, balance_cents: 0}
   - name: box-puppet-show
     role: box_office
-    config: {show: puppet-show, capacity: 25, price_cents: 400, sale_from: 0.0, sale_to: 15.0, balance_cents: 0}
+    config: {show: puppet-show, capacity: 25, price_cents: 400, sale_from: 0.0, sale_to: 15.0, refund_until: 30.0, balance_cents: 0}
   - name: shill-0
     role: shill
     config: {target: burger-3, praises: 8, praise_at: 6.0, balance_cents: 0}
@@ -58,7 +58,7 @@ agents:
     config: {show: puppet-show, buy_at: 4.45, arrive_at: 44.0, balance_cents: 12000, transfer_at: 32.93}
   - name: fan-4
     role: fan
-    config: {show: concert-2, buy_at: 4.27, arrive_at: 59.0, balance_cents: 12000, transfer_at: 33.64}
+    config: {show: concert-2, buy_at: 4.27, refund_at: 24.31, arrive_at: 59.0, balance_cents: 12000, transfer_at: 33.64}
   - name: fan-5
     role: fan
     config: {show: concert-2, buy_at: 27.3, arrive_at: 59.0, balance_cents: 12000, transfer_at: 39.66}
@@ -73,7 +73,7 @@ agents:
     config: {show: concert-1, buy_at: 11.94, arrive_at: 54.0, balance_cents: 12000, transfer_at: 35.87}
   - name: fan-9
     role: fan
-    config: {show: concert-2, buy_at: 4.76, arrive_at: 59.0, balance_cents: 12000, transfer_at: 35.86}
+    config: {show: concert-2, buy_at: 4.76, refund_at: 16.33, arrive_at: 59.0, balance_cents: 12000, transfer_at: 35.86}
   - name: fan-10
     role: fan
     config: {show: puppet-show, buy_at: 20.64, arrive_at: 44.0, balance_cents: 12000}
@@ -88,7 +88,7 @@ agents:
     config: {show: puppet-show, buy_at: 28.66, arrive_at: 44.0, balance_cents: 12000}
   - name: fan-14
     role: fan
-    config: {show: puppet-show, buy_at: 7.83, arrive_at: 44.0, balance_cents: 12000}
+    config: {show: puppet-show, buy_at: 7.83, refund_at: 19.58, arrive_at: 44.0, balance_cents: 12000}
   - name: fan-15
     role: fan
     config: {show: concert-1, buy_at: 27.93, arrive_at: 54.0, balance_cents: 12000}
@@ -103,7 +103,7 @@ agents:
     config: {show: puppet-show, buy_at: 0.76, arrive_at: 44.0, balance_cents: 12000}
   - name: fan-19
     role: fan
-    config: {show: concert-1, buy_at: 0.55, arrive_at: 54.0, balance_cents: 12000}
+    config: {show: concert-1, buy_at: 0.55, refund_at: 18.9, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-20
     role: fan
     config: {show: puppet-show, buy_at: 33.26, arrive_at: 44.0, balance_cents: 12000, transfer_at: 35.26}
@@ -118,7 +118,7 @@ agents:
     config: {show: concert-2, buy_at: 5.86, arrive_at: 59.0, balance_cents: 12000}
   - name: fan-24
     role: fan
-    config: {show: puppet-show, buy_at: 1.15, arrive_at: 44.0, balance_cents: 12000}
+    config: {show: puppet-show, buy_at: 1.15, refund_at: 25.57, arrive_at: 44.0, balance_cents: 12000}
   - name: fan-25
     role: fan
     config: {show: concert-1, buy_at: 2.56, arrive_at: 54.0, balance_cents: 12000}
@@ -133,7 +133,7 @@ agents:
     config: {show: puppet-show, buy_at: 10.42, arrive_at: 44.0, balance_cents: 12000}
   - name: fan-29
     role: fan
-    config: {show: concert-2, buy_at: 2.16, arrive_at: 59.0, balance_cents: 12000}
+    config: {show: concert-2, buy_at: 2.16, refund_at: 24.8, arrive_at: 59.0, balance_cents: 12000}
   - name: fan-30
     role: fan
     config: {show: concert-1, buy_at: 1.7, arrive_at: 54.0, balance_cents: 12000}
@@ -148,7 +148,7 @@ agents:
     config: {show: concert-1, buy_at: 1.76, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-34
     role: fan
-    config: {show: concert-2, buy_at: 20.25, arrive_at: 59.0, balance_cents: 12000}
+    config: {show: concert-2, buy_at: 20.25, refund_at: 27.6, arrive_at: 59.0, balance_cents: 12000}
   - name: fan-35
     role: fan
     config: {show: puppet-show, buy_at: 2.08, arrive_at: 44.0, balance_cents: 12000}
@@ -163,7 +163,7 @@ agents:
     config: {show: concert-2, buy_at: 4.93, arrive_at: 59.0, balance_cents: 12000}
   - name: fan-39
     role: fan
-    config: {show: concert-1, buy_at: 5.24, arrive_at: 54.0, balance_cents: 12000}
+    config: {show: concert-1, buy_at: 5.24, refund_at: 17.13, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-40
     role: fan
     config: {show: concert-1, buy_at: 13.12, arrive_at: 54.0, balance_cents: 12000}
@@ -178,7 +178,7 @@ agents:
     config: {show: concert-1, buy_at: 1.22, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-44
     role: fan
-    config: {show: puppet-show, buy_at: 22.24, arrive_at: 44.0, balance_cents: 12000}
+    config: {show: puppet-show, buy_at: 22.24, refund_at: 21.48, arrive_at: 44.0, balance_cents: 12000}
   - name: fan-45
     role: fan
     config: {show: puppet-show, buy_at: 11.32, arrive_at: 44.0, balance_cents: 12000}
@@ -193,7 +193,7 @@ agents:
     config: {show: concert-2, buy_at: 2.44, arrive_at: 59.0, balance_cents: 12000}
   - name: fan-49
     role: fan
-    config: {show: concert-2, buy_at: 13.47, arrive_at: 59.0, balance_cents: 12000, transfer_at: 34.72}
+    config: {show: concert-2, buy_at: 13.47, refund_at: 16.39, arrive_at: 59.0, balance_cents: 12000, transfer_at: 34.72}
   - name: fan-50
     role: fan
     config: {show: concert-2, buy_at: 4.08, arrive_at: 59.0, balance_cents: 12000}
@@ -208,7 +208,7 @@ agents:
     config: {show: concert-1, buy_at: 13.18, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-54
     role: fan
-    config: {show: concert-1, buy_at: 5.16, arrive_at: 54.0, balance_cents: 12000}
+    config: {show: concert-1, buy_at: 5.16, refund_at: 18.84, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-55
     role: fan
     config: {show: concert-2, buy_at: 3.19, arrive_at: 59.0, balance_cents: 12000, transfer_at: 33.42}
@@ -223,7 +223,7 @@ agents:
     config: {show: concert-2, buy_at: 3.44, arrive_at: 59.0, balance_cents: 12000}
   - name: fan-59
     role: fan
-    config: {show: concert-1, buy_at: 8.54, arrive_at: 54.0, balance_cents: 12000}
+    config: {show: concert-1, buy_at: 8.54, refund_at: 22.57, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-60
     role: fan
     config: {show: puppet-show, buy_at: 9.31, arrive_at: 44.0, balance_cents: 12000}
@@ -238,7 +238,7 @@ agents:
     config: {show: concert-1, buy_at: 6.45, arrive_at: 54.0, balance_cents: 12000}
   - name: fan-64
     role: fan
-    config: {show: concert-2, buy_at: 26.33, arrive_at: 59.0, balance_cents: 12000, transfer_at: 39.3}
+    config: {show: concert-2, buy_at: 26.33, refund_at: 16.34, arrive_at: 59.0, balance_cents: 12000, transfer_at: 39.3}
   - name: fan-65
     role: fan
     config: {show: puppet-show, buy_at: 34.53, arrive_at: 44.0, balance_cents: 12000, transfer_at: 31.09}
@@ -253,7 +253,7 @@ agents:
     config: {show: puppet-show, buy_at: 0.52, arrive_at: 44.0, balance_cents: 12000, transfer_at: 35.69}
   - name: fan-69
     role: fan
-    config: {show: concert-1, buy_at: 4.75, arrive_at: 54.0, balance_cents: 12000, transfer_at: 32.52}
+    config: {show: concert-1, buy_at: 4.75, refund_at: 18.58, arrive_at: 54.0, balance_cents: 12000, transfer_at: 32.52}
   - name: att-0
     role: attendee
     config: {want: food, arrive_at: 41.27, rule: reputation, look_at: 3, balance_cents: 9000}

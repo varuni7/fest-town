@@ -300,6 +300,9 @@ function apply(e){
   else if(e.k==='rep' && r){ r.score = e.v; redrawPanel(); }
   else if(e.k==='ticket'){const v=venues[e.s];
     if(v){v.sold++; v.seats.textContent=v.sold+'/'+v.cap;}}
+  else if(e.k==='refund'){const v=venues[e.s];
+    if(v){v.sold=Math.max(0,v.sold-1); v.seats.textContent=v.sold+'/'+v.cap;}
+    say(fmt(e.t)+'  '+e.m);}
   else if(e.k==='enter'){const v=venues[e.s];
     if(v) walker(v.x,116,'#6d4b85');}
   else if(e.k==='attack'){ say(fmt(e.t)+'  '+e.m,'hot'); }
@@ -383,6 +386,9 @@ def build(bundle: str, out: str) -> str:
                             f"{d.get('reason','')}"})
         elif k == "ticket_issued":
             ev.append({"t": t, "k": "ticket", "s": d.get("show", "")})
+        elif k == "ticket_refunded":
+            ev.append({"t": t, "k": "refund", "s": d.get("show", ""),
+                       "m": f"{d.get('held_by')} returned {s}"})
         elif k == "admitted":
             ev.append({"t": t, "k": "enter", "s": d.get("show", "")})
         elif k == "repriced":
@@ -419,10 +425,12 @@ def build(bundle: str, out: str) -> str:
 
     sold = sum(1 for e in trimmed if e["k"] == "bought")
     shown = sum(1 for e in trimmed if e["k"] == "ticket")
+    back = sum(1 for e in trimmed if e["k"] == "refund")
     people = sum(c["n"] for c in crowd)
     sub = (f"{len(stalls)} stalls &middot; {len(shows)} shows &middot; "
            f"{people} people through the gate &middot; {sold} purchases "
-           f"&middot; {shown} tickets &middot; {clock(0)} to {clock(span)}")
+           f"&middot; {shown} tickets, {back} refunded &middot; "
+           f"{clock(0)} to {clock(span)}")
     html = (PAGE.replace("__DATA__", json.dumps(data))
                 .replace("__TITLE__", prof.get("name", "fest"))
                 .replace("__PH__", str(26 + len(stalls) * 26 + 10))

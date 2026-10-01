@@ -1,0 +1,18 @@
+name: stage_gatecrash
+description: An act that lost the slot walks on anyway. The guard is intact.
+seed: 7
+validator: stage
+plugin_files: [../fest_stage.py, ../fest_stage_validator.py]
+agents:
+  - name: main-stage
+    role: stage_manager
+    config:
+      stage: main
+      rule: highest
+      bids_close: 6.0
+      balance_cents: 0
+      slots: [{slot: s1, from: 44.0, to: 48.0}]
+  - {name: band-a, role: band, config: {stage: main, bid_cents: 9000, bid_at: 1.0, balance_cents: 30000}}
+  - {name: crasher, role: greedy_band, config: {stage: main, trick: crash_the_stage, crash_slot: s1, bid_cents: 100, bid_at: 1.5, balance_cents: 30000}}
+faults: []
+max_time: 60

@@ -1,0 +1,15 @@
+name: defect_refund_twice
+description: A box office that forgets it already refunded.
+seed: 3
+validator: tickets
+plugin_files: [../fest_tickets.py, ../fest_ticket_validator.py]
+agents:
+  - name: box-concert
+    role: box_office
+    config: {show: concert, capacity: 6, price_cents: 1500, sale_from: 0.0, sale_to: 15.0, refund_until: 30.0, defect: refund_twice, balance_cents: 50000}
+  - {name: fan-0, role: fan, config: {show: concert, buy_at: 2.0, arrive_at: 45.0, balance_cents: 12000}}
+  - {name: fan-1, role: fan, config: {show: concert, buy_at: 3.0, refund_at: 10.0, arrive_at: 45.0, balance_cents: 12000}}
+  - {name: fan-2, role: fan, config: {show: concert, buy_at: 4.0, arrive_at: 45.0, balance_cents: 12000}}
+  - {name: greedy, role: cheat_fan, config: {show: concert, buy_at: 5.0, trick: refund_twice, cheat_at: 18.0, target_ticket: concert-t4, arrive_at: 45.0, balance_cents: 12000}}
+faults: []
+max_time: 60

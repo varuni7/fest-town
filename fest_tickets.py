@@ -25,10 +25,14 @@ class BoxOffice(SimAgent):
         self.price = c["price_cents"]
         self.sale_from = c.get("sale_from", 0.0)
         self.sale_to = c.get("sale_to", 15.0)
+        self.refund_until = c.get("refund_until", 30.0)
         self.defect = c.get("defect")         # for negative controls
         self.holder: dict[str, str] = {}      # ticket id -> who holds it
+        self.paid_by: dict[str, str] = {}     # ticket id -> who paid us
         self.used: set[str] = set()
+        self.voided: set[str] = set()
         self.issued = 0
+        self.sold = 0                         # seats currently out
         self.api.register([f"fest.tickets.{self.show}"],
                           {"show": self.show, "price_cents": self.price,
                            "capacity": self.capacity})
@@ -44,14 +48,16 @@ class BoxOffice(SimAgent):
                               "at": now})
             self.api.reply(msg, "sale_refused", {"reason": "window closed"})
             return
-        if self.defect != "oversell" and self.issued >= self.capacity:
+        if self.defect != "oversell" and self.sold >= self.capacity:
             self.api.observe("sale_refused", msg["sender"],
                              {"show": self.show, "reason": "sold out"})
             self.api.reply(msg, "sale_refused", {"reason": "sold out"})
             return
         self.issued += 1
+        self.sold += 1
         tid = f"{self.show}-t{self.issued}"
         self.holder[tid] = msg["sender"]
+        self.paid_by[tid] = msg["sender"]
         self.api.observe("ticket_issued", tid,
                          {"show": self.show, "to": msg["sender"],
                           "price_cents": self.price, "at": now})
@@ -71,9 +77,10 @@ class BoxOffice(SimAgent):
                               "actual_holder": self.holder.get(tid)})
             self.api.reply(msg, "transfer_refused", {"ticket": tid})
             return
-        if tid in self.used:
+        if tid in self.used or tid in self.voided:
             self.api.observe("transfer_refused", tid,
-                             {"by": msg["sender"], "reason": "already used"})
+                             {"by": msg["sender"],
+                              "reason": "already used or refunded"})
             self.api.reply(msg, "transfer_refused", {"ticket": tid})
             return
         self.holder[tid] = to
@@ -83,6 +90,47 @@ class BoxOffice(SimAgent):
                       {"ticket": tid, "show": self.show,
                        "from": msg["sender"]})
         self.api.reply(msg, "transfer_done", {"ticket": tid, "to": to})
+
+    # -- refunds --------------------------------------------------------
+
+    def handle_refund_request(self, msg: dict) -> None:
+        tid = msg["body"]["ticket"]
+        now = self.api.now
+        if self.holder.get(tid) != msg["sender"]:
+            self.api.observe("refund_refused", tid,
+                             {"by": msg["sender"], "reason": "not the holder"})
+            self.api.reply(msg, "refund_refused", {"ticket": tid})
+            return
+        if tid in self.used:
+            self.api.observe("refund_refused", tid,
+                             {"by": msg["sender"], "reason": "already used"})
+            self.api.reply(msg, "refund_refused", {"ticket": tid})
+            return
+        if self.defect != "refund_twice" and tid in self.voided:
+            self.api.observe("refund_refused", tid,
+                             {"by": msg["sender"], "reason": "already refunded"})
+            self.api.reply(msg, "refund_refused", {"ticket": tid})
+            return
+        if self.defect != "refund_after_show" and now > self.refund_until:
+            self.api.observe("refund_refused", tid,
+                             {"by": msg["sender"], "reason": "window closed",
+                              "at": now})
+            self.api.reply(msg, "refund_refused", {"ticket": tid})
+            return
+        # The money goes back to the account that paid us, which is not
+        # always the account holding the ticket. See the open question
+        # in the README.
+        payer = self.paid_by.get(tid, msg["sender"])
+        self.voided.add(tid)
+        self.sold = max(0, self.sold - 1)
+        self.api.observe("ticket_refunded", tid,
+                         {"show": self.show, "to": payer,
+                          "held_by": msg["sender"],
+                          "price_cents": self.price, "at": now})
+        self.api.pay(payer, self.price, memo=f"refund-{tid}")
+        self.api.reply(msg, "refund_done",
+                       {"ticket": tid, "to": payer,
+                        "price_cents": self.price})
 
     # -- the gate -------------------------------------------------------
 
@@ -95,6 +143,10 @@ class BoxOffice(SimAgent):
         if self.defect != "reuse_ticket" and tid in self.used:
             self.api.observe("entry_refused", tid,
                              {"by": msg["sender"], "reason": "already admitted"})
+            return
+        if self.defect != "admit_refunded" and tid in self.voided:
+            self.api.observe("entry_refused", tid,
+                             {"by": msg["sender"], "reason": "refunded"})
             return
         self.used.add(tid)
         self.api.observe("admitted", tid,
@@ -113,6 +165,8 @@ class Fan(SimAgent):
         self.api.later(c.get("buy_at", 5.0), self.buy)
         if c.get("transfer_at") is not None:
             self.api.later(c["transfer_at"], self.pass_it_on)
+        if c.get("refund_at") is not None:
+            self.api.later(c["refund_at"], self.ask_refund)
         self.api.later(c.get("arrive_at", 40.0), self.go_in)
 
     def _office(self) -> str | None:
@@ -147,6 +201,23 @@ class Fan(SimAgent):
         if office:
             self.api.send(office, "transfer_request",
                           {"ticket": self.ticket, "to": to})
+
+    def ask_refund(self) -> None:
+        if self.ticket is None:
+            return
+        office = self._office()
+        if office:
+            self.api.send(office, "refund_request", {"ticket": self.ticket})
+
+    def handle_refund_done(self, msg: dict) -> None:
+        self.api.observe("gave_back", msg["body"]["ticket"],
+                         {"refunded_to": msg["body"]["to"]})
+        if self.config.get("trick") != "enter_after_refund":
+            self.ticket = None
+
+    def handle_refund_refused(self, msg: dict) -> None:
+        self.api.observe("refund_failed", msg["body"]["ticket"],
+                         {"by": self.name})
 
     def handle_transfer_done(self, msg: dict) -> None:
         self.api.observe("gave_away", msg["body"]["ticket"],
@@ -185,6 +256,21 @@ class CheatFan(Fan):
             self.api.later(self.config.get("cheat_at", 35.0), self.steal)
         elif trick == "double_entry":
             self.api.later(self.config.get("cheat_at", 50.0), self.go_in)
+        elif trick == "refund_twice":
+            self.api.later(self.config.get("cheat_at", 20.0), self.ask_refund)
+            self.api.later(self.config.get("cheat_at", 20.0) + 1.0,
+                           self.ask_again)
+        elif trick == "enter_after_refund":
+            self.api.later(self.config.get("cheat_at", 20.0), self.ask_refund)
+
+    def ask_again(self) -> None:
+        """Ask for the same refund a second time, ticket already gone."""
+        tid = self.config.get("target_ticket")
+        office = self._office()
+        if office and tid:
+            self.api.observe("attempted_double_refund", tid,
+                             {"by": self.name})
+            self.api.send(office, "refund_request", {"ticket": tid})
 
     def steal(self) -> None:
         """Try to hand on a ticket belonging to somebody else."""

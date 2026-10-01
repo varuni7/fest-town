@@ -1,0 +1,29 @@
+name: stage_double_book
+description: Two stages that do not decline a second award. One band ends up on both at once.
+seed: 7
+validator: stage
+plugin_files: [../fest_stage.py, ../fest_stage_validator.py]
+agents:
+  - name: main-stage
+    role: stage_manager
+    config:
+      stage: main
+      rule: highest
+      defect: double_book
+      bids_close: 6.0
+      balance_cents: 0
+      slots: [{slot: s1, from: 44.0, to: 48.0}]
+  - name: lawn-stage
+    role: stage_manager
+    config:
+      stage: lawn
+      rule: highest
+      defect: double_book
+      bids_close: 6.0
+      balance_cents: 0
+      slots: [{slot: s1, from: 42.0, to: 46.0}]
+  - {name: headliner, role: greedy_band, config: {stages: [main, lawn], trick: every_slot, bid_cents: 9000, bid_at: 1.0, balance_cents: 40000}}
+  - {name: band-b, role: band, config: {stage: main, bid_cents: 3000, bid_at: 1.5, balance_cents: 30000}}
+  - {name: band-c, role: band, config: {stage: lawn, bid_cents: 2500, bid_at: 1.5, balance_cents: 30000}}
+faults: []
+max_time: 60

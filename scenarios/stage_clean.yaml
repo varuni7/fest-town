@@ -1,0 +1,43 @@
+name: stage_clean
+description: Two stages, eight slots, eleven bands bidding for them.
+seed: 7
+validator: stage
+plugin_files: [../fest_stage.py, ../fest_stage_validator.py]
+agents:
+  - name: main-stage
+    role: stage_manager
+    config:
+      stage: main
+      rule: highest
+      bids_close: 6.0
+      balance_cents: 0
+      slots:
+        - {slot: s1, from: 40.0, to: 44.0}
+        - {slot: s2, from: 44.0, to: 48.0}
+        - {slot: s3, from: 48.0, to: 52.0}
+        - {slot: s4, from: 52.0, to: 56.0}
+  - name: lawn-stage
+    role: stage_manager
+    config:
+      stage: lawn
+      rule: highest
+      bids_close: 6.0
+      balance_cents: 0
+      slots:
+        - {slot: s1, from: 38.0, to: 42.0}
+        - {slot: s2, from: 42.0, to: 46.0}
+        - {slot: s3, from: 46.0, to: 50.0}
+        - {slot: s4, from: 50.0, to: 54.0}
+  - {name: band-a, role: band, config: {stage: main, wants: s4, bid_cents: 9000, bid_at: 1.0, balance_cents: 30000}}
+  - {name: band-b, role: band, config: {stage: main, wants: s4, bid_cents: 7500, bid_at: 1.5, balance_cents: 30000}}
+  - {name: band-c, role: band, config: {stage: main, wants: s3, bid_cents: 6000, bid_at: 2.0, balance_cents: 30000}}
+  - {name: band-d, role: band, config: {stage: main, bid_cents: 5000, bid_at: 2.5, balance_cents: 30000}}
+  - {name: band-e, role: band, config: {stage: main, bid_cents: 4200, bid_at: 3.0, balance_cents: 30000}}
+  - {name: band-f, role: band, config: {stage: main, bid_cents: 3000, bid_at: 3.5, balance_cents: 30000}}
+  - {name: band-g, role: band, config: {stage: lawn, wants: s1, bid_cents: 2800, bid_at: 1.0, balance_cents: 30000}}
+  - {name: band-h, role: band, config: {stage: lawn, bid_cents: 2500, bid_at: 1.5, balance_cents: 30000}}
+  - {name: band-i, role: band, config: {stage: lawn, bid_cents: 2000, bid_at: 2.0, balance_cents: 30000}}
+  - {name: band-j, role: band, config: {stage: lawn, bid_cents: 1500, bid_at: 2.5, balance_cents: 30000}}
+  - {name: band-k, role: band, config: {stage: lawn, bid_cents: 1200, bid_at: 3.0, balance_cents: 30000}}
+faults: []
+max_time: 60
