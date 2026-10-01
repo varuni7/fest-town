@@ -78,8 +78,10 @@ def fest(spec, trace) -> list[StageResult]:
         note=f"{len(turned)} orders hit an empty stall;"
              f" {len(gave_up)} attendees left without buying"))
 
-    # Money is the one hard invariant here.
-    settled = trace.find("payment_settled")
+    # Money is the one hard invariant here. Filter to stall purchases:
+    # a combined fest also settles ticket payments, which are not ours.
+    settled = [e for e in trace.find("payment_settled")
+               if str(e.subject).startswith("buy-")]
     stages.append(StageResult(
         name="payments_recorded",
         status="passed" if len(settled) == len(bought) else "failed",
@@ -223,4 +225,18 @@ def fest_reputation(spec, trace) -> list[StageResult]:
                  f" ({len(smears)} smear bursts, {len(shills)} shill"
                  f" bursts); {len(ignored)} were ignored by the trust"
                  f" layer"))
+    return stages
+
+
+@validator("midway")
+def midway(spec, trace) -> list[StageResult]:
+    """One fest: stalls on the midway and ticketed shows, judged together."""
+    # Plugin files are loaded by path, so the ticket validator comes
+    # from the registry rather than an import.
+    from nandatown.sim.validators import VALIDATORS
+    stages = fest_reputation(spec, trace)
+    tickets = VALIDATORS.get("tickets")
+    if tickets and any(a.role == "box_office" for a in spec.agents):
+        stages += [s for s in tickets(spec, trace)
+                   if s.name != "tickets_sold"]
     return stages
