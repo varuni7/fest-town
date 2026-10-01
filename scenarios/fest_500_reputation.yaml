@@ -1,0 +1,1535 @@
+name: fest
+description: Nine stalls over a twelve hour fest with a lunch rush; 500 attendees choosing by reputation.
+seed: 42
+validator: fest
+plugin_files: [../fest_roles.py, ../fest_trust.py, ../fest_validator.py]
+agents:
+  - name: burger-1
+    role: stall
+    config: {kind: burgers, category: food, price_cents: 250, stock: 500, quality: 0.8, balance_cents: 0}
+  - name: burger-2
+    role: stall
+    config: {kind: burgers, category: food, price_cents: 220, stock: 500, quality: 0.55, balance_cents: 0}
+  - name: burger-3
+    role: stall
+    config: {kind: burgers, category: food, price_cents: 300, stock: 500, quality: 0.35, balance_cents: 0}
+  - name: ice-cream-1
+    role: stall
+    config: {kind: ice cream, category: food, price_cents: 120, stock: 500, quality: 0.75, balance_cents: 0}
+  - name: ice-cream-2
+    role: stall
+    config: {kind: ice cream, category: food, price_cents: 150, stock: 500, quality: 0.45, balance_cents: 0}
+  - name: bake-sale
+    role: stall
+    config: {kind: bakes, category: food, price_cents: 80, stock: 500, quality: 0.65, balance_cents: 0}
+  - name: games
+    role: stall
+    config: {kind: games, category: activity, price_cents: 100, stock: 500, quality: 0.6, balance_cents: 0}
+  - name: darts
+    role: stall
+    config: {kind: darts, category: activity, price_cents: 50, stock: 500, quality: 0.5, balance_cents: 0}
+  - name: photo-booth
+    role: stall
+    config: {kind: photos, category: activity, price_cents: 200, stock: 500, quality: 0.7, balance_cents: 0}
+  - name: att-0
+    role: attendee
+    config: {want: food, arrive_at: 24.8, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-1
+    role: attendee
+    config: {want: activity, arrive_at: 51.721, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-2
+    role: attendee
+    config: {want: activity, arrive_at: 5.533, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-3
+    role: attendee
+    config: {want: food, arrive_at: 15.308, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-4
+    role: attendee
+    config: {want: food, arrive_at: 21.233, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-5
+    role: attendee
+    config: {want: food, arrive_at: 16.831, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-6
+    role: attendee
+    config: {want: activity, arrive_at: 19.868, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-7
+    role: attendee
+    config: {want: food, arrive_at: 20.411, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-8
+    role: attendee
+    config: {want: activity, arrive_at: 5.802, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-9
+    role: attendee
+    config: {want: food, arrive_at: 20.564, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-10
+    role: attendee
+    config: {want: food, arrive_at: 20.183, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-11
+    role: attendee
+    config: {want: activity, arrive_at: 25.483, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-12
+    role: attendee
+    config: {want: food, arrive_at: 20.081, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-13
+    role: attendee
+    config: {want: food, arrive_at: 19.728, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-14
+    role: attendee
+    config: {want: food, arrive_at: 20.875, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-15
+    role: attendee
+    config: {want: activity, arrive_at: 8.789, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-16
+    role: attendee
+    config: {want: food, arrive_at: 52.674, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-17
+    role: attendee
+    config: {want: food, arrive_at: 15.396, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-18
+    role: attendee
+    config: {want: food, arrive_at: 10.577, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-19
+    role: attendee
+    config: {want: activity, arrive_at: 9.346, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-20
+    role: attendee
+    config: {want: food, arrive_at: 18.862, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-21
+    role: attendee
+    config: {want: food, arrive_at: 23.165, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-22
+    role: attendee
+    config: {want: activity, arrive_at: 26.425, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-23
+    role: attendee
+    config: {want: activity, arrive_at: 24.738, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-24
+    role: attendee
+    config: {want: food, arrive_at: 16.967, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-25
+    role: attendee
+    config: {want: food, arrive_at: 19.361, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-26
+    role: attendee
+    config: {want: activity, arrive_at: 45.789, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-27
+    role: attendee
+    config: {want: activity, arrive_at: 36.445, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-28
+    role: attendee
+    config: {want: food, arrive_at: 22.027, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-29
+    role: attendee
+    config: {want: food, arrive_at: 24.08, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-30
+    role: attendee
+    config: {want: food, arrive_at: 23.405, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-31
+    role: attendee
+    config: {want: food, arrive_at: 25.12, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-32
+    role: attendee
+    config: {want: food, arrive_at: 15.477, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-33
+    role: attendee
+    config: {want: food, arrive_at: 20.067, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-34
+    role: attendee
+    config: {want: activity, arrive_at: 38.767, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-35
+    role: attendee
+    config: {want: food, arrive_at: 4.576, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-36
+    role: attendee
+    config: {want: food, arrive_at: 19.263, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-37
+    role: attendee
+    config: {want: activity, arrive_at: 22.049, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-38
+    role: attendee
+    config: {want: activity, arrive_at: 45.201, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-39
+    role: attendee
+    config: {want: activity, arrive_at: 28.812, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-40
+    role: attendee
+    config: {want: food, arrive_at: 20.845, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-41
+    role: attendee
+    config: {want: activity, arrive_at: 29.854, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-42
+    role: attendee
+    config: {want: activity, arrive_at: 30.648, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-43
+    role: attendee
+    config: {want: activity, arrive_at: 21.245, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-44
+    role: attendee
+    config: {want: activity, arrive_at: 4.766, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-45
+    role: attendee
+    config: {want: food, arrive_at: 21.747, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-46
+    role: attendee
+    config: {want: food, arrive_at: 9.007, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-47
+    role: attendee
+    config: {want: food, arrive_at: 22.367, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-48
+    role: attendee
+    config: {want: activity, arrive_at: 21.585, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-49
+    role: attendee
+    config: {want: activity, arrive_at: 30.024, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-50
+    role: attendee
+    config: {want: food, arrive_at: 21.853, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-51
+    role: attendee
+    config: {want: food, arrive_at: 6.015, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-52
+    role: attendee
+    config: {want: food, arrive_at: 23.578, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-53
+    role: attendee
+    config: {want: food, arrive_at: 18.753, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-54
+    role: attendee
+    config: {want: food, arrive_at: 32.726, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-55
+    role: attendee
+    config: {want: activity, arrive_at: 24.79, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-56
+    role: attendee
+    config: {want: food, arrive_at: 18.079, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-57
+    role: attendee
+    config: {want: food, arrive_at: 19.289, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-58
+    role: attendee
+    config: {want: activity, arrive_at: 22.628, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-59
+    role: attendee
+    config: {want: food, arrive_at: 18.695, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-60
+    role: attendee
+    config: {want: activity, arrive_at: 20.189, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-61
+    role: attendee
+    config: {want: activity, arrive_at: 37.089, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-62
+    role: attendee
+    config: {want: activity, arrive_at: 40.18, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-63
+    role: attendee
+    config: {want: food, arrive_at: 18.666, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-64
+    role: attendee
+    config: {want: activity, arrive_at: 16.4, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-65
+    role: attendee
+    config: {want: activity, arrive_at: 53.929, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-66
+    role: attendee
+    config: {want: activity, arrive_at: 17.125, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-67
+    role: attendee
+    config: {want: food, arrive_at: 24.46, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-68
+    role: attendee
+    config: {want: food, arrive_at: 23.143, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-69
+    role: attendee
+    config: {want: activity, arrive_at: 33.519, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-70
+    role: attendee
+    config: {want: food, arrive_at: 18.211, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-71
+    role: attendee
+    config: {want: activity, arrive_at: 32.818, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-72
+    role: attendee
+    config: {want: food, arrive_at: 14.886, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-73
+    role: attendee
+    config: {want: activity, arrive_at: 15.374, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-74
+    role: attendee
+    config: {want: activity, arrive_at: 36.996, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-75
+    role: attendee
+    config: {want: activity, arrive_at: 24.466, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-76
+    role: attendee
+    config: {want: food, arrive_at: 22.596, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-77
+    role: attendee
+    config: {want: food, arrive_at: 50.113, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-78
+    role: attendee
+    config: {want: activity, arrive_at: 36.27, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-79
+    role: attendee
+    config: {want: activity, arrive_at: 18.879, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-80
+    role: attendee
+    config: {want: activity, arrive_at: 19.994, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-81
+    role: attendee
+    config: {want: activity, arrive_at: 8.557, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-82
+    role: attendee
+    config: {want: activity, arrive_at: 8.859, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-83
+    role: attendee
+    config: {want: food, arrive_at: 16.643, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-84
+    role: attendee
+    config: {want: activity, arrive_at: 42.766, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-85
+    role: attendee
+    config: {want: food, arrive_at: 22.082, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-86
+    role: attendee
+    config: {want: activity, arrive_at: 33.357, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-87
+    role: attendee
+    config: {want: food, arrive_at: 24.297, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-88
+    role: attendee
+    config: {want: activity, arrive_at: 48.861, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-89
+    role: attendee
+    config: {want: food, arrive_at: 17.279, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-90
+    role: attendee
+    config: {want: food, arrive_at: 24.396, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-91
+    role: attendee
+    config: {want: food, arrive_at: 19.928, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-92
+    role: attendee
+    config: {want: food, arrive_at: 15.802, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-93
+    role: attendee
+    config: {want: activity, arrive_at: 8.986, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-94
+    role: attendee
+    config: {want: activity, arrive_at: 38.426, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-95
+    role: attendee
+    config: {want: activity, arrive_at: 20.257, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-96
+    role: attendee
+    config: {want: food, arrive_at: 21.394, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-97
+    role: attendee
+    config: {want: food, arrive_at: 24.901, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-98
+    role: attendee
+    config: {want: food, arrive_at: 28.1, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-99
+    role: attendee
+    config: {want: food, arrive_at: 36.167, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-100
+    role: attendee
+    config: {want: activity, arrive_at: 26.275, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-101
+    role: attendee
+    config: {want: food, arrive_at: 18.967, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-102
+    role: attendee
+    config: {want: food, arrive_at: 15.087, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-103
+    role: attendee
+    config: {want: activity, arrive_at: 7.506, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-104
+    role: attendee
+    config: {want: activity, arrive_at: 29.835, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-105
+    role: attendee
+    config: {want: activity, arrive_at: 18.401, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-106
+    role: attendee
+    config: {want: activity, arrive_at: 39.456, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-107
+    role: attendee
+    config: {want: activity, arrive_at: 50.192, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-108
+    role: attendee
+    config: {want: activity, arrive_at: 30.352, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-109
+    role: attendee
+    config: {want: activity, arrive_at: 17.734, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-110
+    role: attendee
+    config: {want: food, arrive_at: 24.46, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-111
+    role: attendee
+    config: {want: activity, arrive_at: 29.627, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-112
+    role: attendee
+    config: {want: activity, arrive_at: 45.716, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-113
+    role: attendee
+    config: {want: activity, arrive_at: 44.389, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-114
+    role: attendee
+    config: {want: activity, arrive_at: 21.75, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-115
+    role: attendee
+    config: {want: activity, arrive_at: 7.86, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-116
+    role: attendee
+    config: {want: food, arrive_at: 30.503, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-117
+    role: attendee
+    config: {want: activity, arrive_at: 13.905, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-118
+    role: attendee
+    config: {want: food, arrive_at: 24.566, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-119
+    role: attendee
+    config: {want: food, arrive_at: 20.48, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-120
+    role: attendee
+    config: {want: activity, arrive_at: 51.281, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-121
+    role: attendee
+    config: {want: food, arrive_at: 19.416, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-122
+    role: attendee
+    config: {want: food, arrive_at: 54.438, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-123
+    role: attendee
+    config: {want: food, arrive_at: 21.077, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-124
+    role: attendee
+    config: {want: food, arrive_at: 21.949, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-125
+    role: attendee
+    config: {want: food, arrive_at: 24.708, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-126
+    role: attendee
+    config: {want: food, arrive_at: 15.557, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-127
+    role: attendee
+    config: {want: activity, arrive_at: 18.4, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-128
+    role: attendee
+    config: {want: activity, arrive_at: 39.598, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-129
+    role: attendee
+    config: {want: food, arrive_at: 24.724, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-130
+    role: attendee
+    config: {want: activity, arrive_at: 50.76, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-131
+    role: attendee
+    config: {want: activity, arrive_at: 51.005, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-132
+    role: attendee
+    config: {want: food, arrive_at: 24.208, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-133
+    role: attendee
+    config: {want: activity, arrive_at: 25.032, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-134
+    role: attendee
+    config: {want: activity, arrive_at: 17.688, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-135
+    role: attendee
+    config: {want: food, arrive_at: 21.856, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-136
+    role: attendee
+    config: {want: activity, arrive_at: 17.862, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-137
+    role: attendee
+    config: {want: food, arrive_at: 9.512, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-138
+    role: attendee
+    config: {want: activity, arrive_at: 50.761, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-139
+    role: attendee
+    config: {want: activity, arrive_at: 24.225, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-140
+    role: attendee
+    config: {want: activity, arrive_at: 43.115, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-141
+    role: attendee
+    config: {want: food, arrive_at: 4.824, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-142
+    role: attendee
+    config: {want: activity, arrive_at: 39.541, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-143
+    role: attendee
+    config: {want: activity, arrive_at: 52.659, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-144
+    role: attendee
+    config: {want: activity, arrive_at: 18.673, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-145
+    role: attendee
+    config: {want: activity, arrive_at: 44.505, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-146
+    role: attendee
+    config: {want: food, arrive_at: 22.701, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-147
+    role: attendee
+    config: {want: activity, arrive_at: 8.711, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-148
+    role: attendee
+    config: {want: food, arrive_at: 16.369, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-149
+    role: attendee
+    config: {want: activity, arrive_at: 44.266, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-150
+    role: attendee
+    config: {want: activity, arrive_at: 24.169, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-151
+    role: attendee
+    config: {want: activity, arrive_at: 26.488, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-152
+    role: attendee
+    config: {want: food, arrive_at: 22.92, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-153
+    role: attendee
+    config: {want: food, arrive_at: 15.668, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-154
+    role: attendee
+    config: {want: activity, arrive_at: 45.847, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-155
+    role: attendee
+    config: {want: food, arrive_at: 18.941, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-156
+    role: attendee
+    config: {want: food, arrive_at: 8.894, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-157
+    role: attendee
+    config: {want: activity, arrive_at: 34.378, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-158
+    role: attendee
+    config: {want: food, arrive_at: 19.699, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-159
+    role: attendee
+    config: {want: food, arrive_at: 20.534, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-160
+    role: attendee
+    config: {want: food, arrive_at: 19.403, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-161
+    role: attendee
+    config: {want: food, arrive_at: 19.223, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-162
+    role: attendee
+    config: {want: activity, arrive_at: 36.018, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-163
+    role: attendee
+    config: {want: activity, arrive_at: 42.671, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-164
+    role: attendee
+    config: {want: activity, arrive_at: 17.496, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-165
+    role: attendee
+    config: {want: food, arrive_at: 21.982, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-166
+    role: attendee
+    config: {want: activity, arrive_at: 31.887, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-167
+    role: attendee
+    config: {want: food, arrive_at: 17.094, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-168
+    role: attendee
+    config: {want: activity, arrive_at: 19.126, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-169
+    role: attendee
+    config: {want: activity, arrive_at: 50.276, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-170
+    role: attendee
+    config: {want: food, arrive_at: 41.378, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-171
+    role: attendee
+    config: {want: food, arrive_at: 18.799, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-172
+    role: attendee
+    config: {want: activity, arrive_at: 2.553, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-173
+    role: attendee
+    config: {want: food, arrive_at: 40.42, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-174
+    role: attendee
+    config: {want: food, arrive_at: 24.469, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-175
+    role: attendee
+    config: {want: food, arrive_at: 48.686, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-176
+    role: attendee
+    config: {want: activity, arrive_at: 32.109, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-177
+    role: attendee
+    config: {want: food, arrive_at: 19.59, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-178
+    role: attendee
+    config: {want: food, arrive_at: 22.415, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-179
+    role: attendee
+    config: {want: food, arrive_at: 17.921, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-180
+    role: attendee
+    config: {want: activity, arrive_at: 33.117, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-181
+    role: attendee
+    config: {want: activity, arrive_at: 36.236, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-182
+    role: attendee
+    config: {want: activity, arrive_at: 50.707, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-183
+    role: attendee
+    config: {want: food, arrive_at: 18.391, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-184
+    role: attendee
+    config: {want: food, arrive_at: 23.887, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-185
+    role: attendee
+    config: {want: activity, arrive_at: 31.772, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-186
+    role: attendee
+    config: {want: activity, arrive_at: 33.485, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-187
+    role: attendee
+    config: {want: food, arrive_at: 19.422, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-188
+    role: attendee
+    config: {want: food, arrive_at: 24.009, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-189
+    role: attendee
+    config: {want: food, arrive_at: 53.576, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-190
+    role: attendee
+    config: {want: activity, arrive_at: 22.405, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-191
+    role: attendee
+    config: {want: activity, arrive_at: 35.429, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-192
+    role: attendee
+    config: {want: activity, arrive_at: 18.839, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-193
+    role: attendee
+    config: {want: activity, arrive_at: 15.152, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-194
+    role: attendee
+    config: {want: food, arrive_at: 24.121, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-195
+    role: attendee
+    config: {want: food, arrive_at: 1.568, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-196
+    role: attendee
+    config: {want: activity, arrive_at: 6.828, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-197
+    role: attendee
+    config: {want: activity, arrive_at: 10.671, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-198
+    role: attendee
+    config: {want: food, arrive_at: 23.306, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-199
+    role: attendee
+    config: {want: activity, arrive_at: 17.763, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-200
+    role: attendee
+    config: {want: food, arrive_at: 20.728, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-201
+    role: attendee
+    config: {want: food, arrive_at: 40.9, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-202
+    role: attendee
+    config: {want: activity, arrive_at: 51.528, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-203
+    role: attendee
+    config: {want: food, arrive_at: 15.841, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-204
+    role: attendee
+    config: {want: activity, arrive_at: 19.654, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-205
+    role: attendee
+    config: {want: food, arrive_at: 33.923, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-206
+    role: attendee
+    config: {want: activity, arrive_at: 12.777, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-207
+    role: attendee
+    config: {want: food, arrive_at: 18.883, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-208
+    role: attendee
+    config: {want: food, arrive_at: 16.337, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-209
+    role: attendee
+    config: {want: food, arrive_at: 6.207, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-210
+    role: attendee
+    config: {want: food, arrive_at: 21.186, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-211
+    role: attendee
+    config: {want: activity, arrive_at: 5.44, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-212
+    role: attendee
+    config: {want: activity, arrive_at: 37.404, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-213
+    role: attendee
+    config: {want: food, arrive_at: 18.149, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-214
+    role: attendee
+    config: {want: activity, arrive_at: 32.022, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-215
+    role: attendee
+    config: {want: food, arrive_at: 19.325, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-216
+    role: attendee
+    config: {want: food, arrive_at: 20.009, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-217
+    role: attendee
+    config: {want: food, arrive_at: 17.48, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-218
+    role: attendee
+    config: {want: activity, arrive_at: 16.314, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-219
+    role: attendee
+    config: {want: food, arrive_at: 54.597, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-220
+    role: attendee
+    config: {want: food, arrive_at: 17.953, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-221
+    role: attendee
+    config: {want: activity, arrive_at: 53.077, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-222
+    role: attendee
+    config: {want: food, arrive_at: 18.687, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-223
+    role: attendee
+    config: {want: food, arrive_at: 22.881, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-224
+    role: attendee
+    config: {want: food, arrive_at: 15.374, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-225
+    role: attendee
+    config: {want: activity, arrive_at: 23.25, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-226
+    role: attendee
+    config: {want: activity, arrive_at: 37.522, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-227
+    role: attendee
+    config: {want: activity, arrive_at: 24.253, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-228
+    role: attendee
+    config: {want: food, arrive_at: 24.358, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-229
+    role: attendee
+    config: {want: activity, arrive_at: 52.714, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-230
+    role: attendee
+    config: {want: activity, arrive_at: 16.95, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-231
+    role: attendee
+    config: {want: food, arrive_at: 19.03, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-232
+    role: attendee
+    config: {want: activity, arrive_at: 18.888, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-233
+    role: attendee
+    config: {want: activity, arrive_at: 14.875, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-234
+    role: attendee
+    config: {want: activity, arrive_at: 25.532, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-235
+    role: attendee
+    config: {want: food, arrive_at: 51.573, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-236
+    role: attendee
+    config: {want: activity, arrive_at: 19.542, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-237
+    role: attendee
+    config: {want: food, arrive_at: 43.09, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-238
+    role: attendee
+    config: {want: food, arrive_at: 24.253, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-239
+    role: attendee
+    config: {want: activity, arrive_at: 14.72, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-240
+    role: attendee
+    config: {want: food, arrive_at: 18.138, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-241
+    role: attendee
+    config: {want: activity, arrive_at: 44.763, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-242
+    role: attendee
+    config: {want: activity, arrive_at: 10.52, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-243
+    role: attendee
+    config: {want: food, arrive_at: 25.335, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-244
+    role: attendee
+    config: {want: activity, arrive_at: 27.474, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-245
+    role: attendee
+    config: {want: activity, arrive_at: 4.132, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-246
+    role: attendee
+    config: {want: activity, arrive_at: 16.326, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-247
+    role: attendee
+    config: {want: activity, arrive_at: 11.224, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-248
+    role: attendee
+    config: {want: food, arrive_at: 21.136, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-249
+    role: attendee
+    config: {want: activity, arrive_at: 24.531, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-250
+    role: attendee
+    config: {want: activity, arrive_at: 32.093, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-251
+    role: attendee
+    config: {want: activity, arrive_at: 6.183, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-252
+    role: attendee
+    config: {want: food, arrive_at: 47.337, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-253
+    role: attendee
+    config: {want: food, arrive_at: 16.297, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-254
+    role: attendee
+    config: {want: food, arrive_at: 48.387, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-255
+    role: attendee
+    config: {want: activity, arrive_at: 12.124, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-256
+    role: attendee
+    config: {want: food, arrive_at: 24.068, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-257
+    role: attendee
+    config: {want: activity, arrive_at: 16.908, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-258
+    role: attendee
+    config: {want: food, arrive_at: 18.137, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-259
+    role: attendee
+    config: {want: food, arrive_at: 22.419, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-260
+    role: attendee
+    config: {want: activity, arrive_at: 29.388, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-261
+    role: attendee
+    config: {want: food, arrive_at: 24.563, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-262
+    role: attendee
+    config: {want: food, arrive_at: 21.085, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-263
+    role: attendee
+    config: {want: food, arrive_at: 20.131, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-264
+    role: attendee
+    config: {want: food, arrive_at: 7.642, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-265
+    role: attendee
+    config: {want: activity, arrive_at: 35.303, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-266
+    role: attendee
+    config: {want: activity, arrive_at: 18.237, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-267
+    role: attendee
+    config: {want: food, arrive_at: 24.719, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-268
+    role: attendee
+    config: {want: food, arrive_at: 15.274, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-269
+    role: attendee
+    config: {want: activity, arrive_at: 31.465, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-270
+    role: attendee
+    config: {want: food, arrive_at: 15.632, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-271
+    role: attendee
+    config: {want: activity, arrive_at: 27.426, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-272
+    role: attendee
+    config: {want: food, arrive_at: 23.228, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-273
+    role: attendee
+    config: {want: activity, arrive_at: 47.688, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-274
+    role: attendee
+    config: {want: food, arrive_at: 17.779, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-275
+    role: attendee
+    config: {want: food, arrive_at: 14.774, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-276
+    role: attendee
+    config: {want: activity, arrive_at: 4.41, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-277
+    role: attendee
+    config: {want: food, arrive_at: 21.711, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-278
+    role: attendee
+    config: {want: food, arrive_at: 35.467, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-279
+    role: attendee
+    config: {want: food, arrive_at: 23.849, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-280
+    role: attendee
+    config: {want: food, arrive_at: 22.258, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-281
+    role: attendee
+    config: {want: food, arrive_at: 23.996, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-282
+    role: attendee
+    config: {want: food, arrive_at: 26.312, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-283
+    role: attendee
+    config: {want: activity, arrive_at: 54.999, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-284
+    role: attendee
+    config: {want: food, arrive_at: 21.034, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-285
+    role: attendee
+    config: {want: activity, arrive_at: 25.143, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-286
+    role: attendee
+    config: {want: activity, arrive_at: 3.095, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-287
+    role: attendee
+    config: {want: food, arrive_at: 17.098, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-288
+    role: attendee
+    config: {want: food, arrive_at: 44.444, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-289
+    role: attendee
+    config: {want: activity, arrive_at: 40.556, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-290
+    role: attendee
+    config: {want: food, arrive_at: 53.794, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-291
+    role: attendee
+    config: {want: food, arrive_at: 19.521, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-292
+    role: attendee
+    config: {want: food, arrive_at: 18.971, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-293
+    role: attendee
+    config: {want: activity, arrive_at: 40.656, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-294
+    role: attendee
+    config: {want: food, arrive_at: 19.232, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-295
+    role: attendee
+    config: {want: food, arrive_at: 19.093, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-296
+    role: attendee
+    config: {want: food, arrive_at: 24.697, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-297
+    role: attendee
+    config: {want: activity, arrive_at: 20.599, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-298
+    role: attendee
+    config: {want: activity, arrive_at: 31.953, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-299
+    role: attendee
+    config: {want: activity, arrive_at: 31.572, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-300
+    role: attendee
+    config: {want: activity, arrive_at: 15.496, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-301
+    role: attendee
+    config: {want: food, arrive_at: 53.464, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-302
+    role: attendee
+    config: {want: food, arrive_at: 47.934, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-303
+    role: attendee
+    config: {want: activity, arrive_at: 50.054, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-304
+    role: attendee
+    config: {want: food, arrive_at: 32.272, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-305
+    role: attendee
+    config: {want: food, arrive_at: 20.785, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-306
+    role: attendee
+    config: {want: activity, arrive_at: 18.418, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-307
+    role: attendee
+    config: {want: food, arrive_at: 20.394, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-308
+    role: attendee
+    config: {want: food, arrive_at: 15.96, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-309
+    role: attendee
+    config: {want: activity, arrive_at: 39.729, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-310
+    role: attendee
+    config: {want: food, arrive_at: 38.988, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-311
+    role: attendee
+    config: {want: activity, arrive_at: 54.308, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-312
+    role: attendee
+    config: {want: activity, arrive_at: 36.128, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-313
+    role: attendee
+    config: {want: food, arrive_at: 20.139, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-314
+    role: attendee
+    config: {want: food, arrive_at: 19.662, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-315
+    role: attendee
+    config: {want: activity, arrive_at: 16.112, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-316
+    role: attendee
+    config: {want: food, arrive_at: 20.199, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-317
+    role: attendee
+    config: {want: food, arrive_at: 45.179, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-318
+    role: attendee
+    config: {want: activity, arrive_at: 4.788, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-319
+    role: attendee
+    config: {want: food, arrive_at: 16.957, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-320
+    role: attendee
+    config: {want: activity, arrive_at: 7.114, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-321
+    role: attendee
+    config: {want: food, arrive_at: 24.22, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-322
+    role: attendee
+    config: {want: food, arrive_at: 24.607, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-323
+    role: attendee
+    config: {want: activity, arrive_at: 17.63, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-324
+    role: attendee
+    config: {want: food, arrive_at: 17.586, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-325
+    role: attendee
+    config: {want: food, arrive_at: 18.532, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-326
+    role: attendee
+    config: {want: activity, arrive_at: 20.292, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-327
+    role: attendee
+    config: {want: activity, arrive_at: 16.181, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-328
+    role: attendee
+    config: {want: food, arrive_at: 39.26, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-329
+    role: attendee
+    config: {want: food, arrive_at: 21.919, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-330
+    role: attendee
+    config: {want: activity, arrive_at: 41.617, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-331
+    role: attendee
+    config: {want: activity, arrive_at: 16.35, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-332
+    role: attendee
+    config: {want: activity, arrive_at: 1.754, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-333
+    role: attendee
+    config: {want: activity, arrive_at: 8.021, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-334
+    role: attendee
+    config: {want: food, arrive_at: 18.155, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-335
+    role: attendee
+    config: {want: food, arrive_at: 22.608, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-336
+    role: attendee
+    config: {want: food, arrive_at: 16.339, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-337
+    role: attendee
+    config: {want: food, arrive_at: 23.053, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-338
+    role: attendee
+    config: {want: food, arrive_at: 17.092, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-339
+    role: attendee
+    config: {want: food, arrive_at: 23.055, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-340
+    role: attendee
+    config: {want: food, arrive_at: 24.793, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-341
+    role: attendee
+    config: {want: food, arrive_at: 18.955, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-342
+    role: attendee
+    config: {want: food, arrive_at: 23.397, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-343
+    role: attendee
+    config: {want: food, arrive_at: 16.362, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-344
+    role: attendee
+    config: {want: activity, arrive_at: 47.409, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-345
+    role: attendee
+    config: {want: food, arrive_at: 18.934, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-346
+    role: attendee
+    config: {want: food, arrive_at: 18.076, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-347
+    role: attendee
+    config: {want: food, arrive_at: 15.46, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-348
+    role: attendee
+    config: {want: food, arrive_at: 22.178, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-349
+    role: attendee
+    config: {want: food, arrive_at: 21.965, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-350
+    role: attendee
+    config: {want: activity, arrive_at: 41.692, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-351
+    role: attendee
+    config: {want: food, arrive_at: 16.401, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-352
+    role: attendee
+    config: {want: food, arrive_at: 22.666, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-353
+    role: attendee
+    config: {want: activity, arrive_at: 25.122, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-354
+    role: attendee
+    config: {want: activity, arrive_at: 20.231, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-355
+    role: attendee
+    config: {want: activity, arrive_at: 12.144, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-356
+    role: attendee
+    config: {want: activity, arrive_at: 13.759, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-357
+    role: attendee
+    config: {want: food, arrive_at: 18.557, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-358
+    role: attendee
+    config: {want: food, arrive_at: 3.456, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-359
+    role: attendee
+    config: {want: activity, arrive_at: 50.758, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-360
+    role: attendee
+    config: {want: food, arrive_at: 22.571, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-361
+    role: attendee
+    config: {want: food, arrive_at: 21.369, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-362
+    role: attendee
+    config: {want: food, arrive_at: 17.746, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-363
+    role: attendee
+    config: {want: food, arrive_at: 22.007, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-364
+    role: attendee
+    config: {want: food, arrive_at: 23.34, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-365
+    role: attendee
+    config: {want: food, arrive_at: 16.522, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-366
+    role: attendee
+    config: {want: activity, arrive_at: 29.213, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-367
+    role: attendee
+    config: {want: activity, arrive_at: 46.385, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-368
+    role: attendee
+    config: {want: activity, arrive_at: 24.555, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-369
+    role: attendee
+    config: {want: food, arrive_at: 21.123, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-370
+    role: attendee
+    config: {want: activity, arrive_at: 10.626, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-371
+    role: attendee
+    config: {want: activity, arrive_at: 19.476, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-372
+    role: attendee
+    config: {want: activity, arrive_at: 29.285, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-373
+    role: attendee
+    config: {want: food, arrive_at: 21.073, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-374
+    role: attendee
+    config: {want: food, arrive_at: 16.176, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-375
+    role: attendee
+    config: {want: food, arrive_at: 24.933, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-376
+    role: attendee
+    config: {want: food, arrive_at: 15.252, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-377
+    role: attendee
+    config: {want: activity, arrive_at: 51.5, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-378
+    role: attendee
+    config: {want: food, arrive_at: 23.912, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-379
+    role: attendee
+    config: {want: food, arrive_at: 22.379, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-380
+    role: attendee
+    config: {want: food, arrive_at: 17.874, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-381
+    role: attendee
+    config: {want: activity, arrive_at: 27.98, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-382
+    role: attendee
+    config: {want: activity, arrive_at: 51.822, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-383
+    role: attendee
+    config: {want: food, arrive_at: 22.002, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-384
+    role: attendee
+    config: {want: activity, arrive_at: 3.214, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-385
+    role: attendee
+    config: {want: activity, arrive_at: 35.363, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-386
+    role: attendee
+    config: {want: food, arrive_at: 23.875, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-387
+    role: attendee
+    config: {want: activity, arrive_at: 27.955, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-388
+    role: attendee
+    config: {want: food, arrive_at: 7.527, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-389
+    role: attendee
+    config: {want: food, arrive_at: 19.286, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-390
+    role: attendee
+    config: {want: activity, arrive_at: 41.474, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-391
+    role: attendee
+    config: {want: activity, arrive_at: 18.983, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-392
+    role: attendee
+    config: {want: food, arrive_at: 16.82, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-393
+    role: attendee
+    config: {want: food, arrive_at: 19.768, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-394
+    role: attendee
+    config: {want: activity, arrive_at: 19.489, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-395
+    role: attendee
+    config: {want: activity, arrive_at: 30.273, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-396
+    role: attendee
+    config: {want: activity, arrive_at: 10.911, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-397
+    role: attendee
+    config: {want: food, arrive_at: 38.235, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-398
+    role: attendee
+    config: {want: activity, arrive_at: 52.898, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-399
+    role: attendee
+    config: {want: activity, arrive_at: 45.477, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-400
+    role: attendee
+    config: {want: food, arrive_at: 29.645, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-401
+    role: attendee
+    config: {want: activity, arrive_at: 27.601, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-402
+    role: attendee
+    config: {want: activity, arrive_at: 23.927, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-403
+    role: attendee
+    config: {want: activity, arrive_at: 19.114, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-404
+    role: attendee
+    config: {want: activity, arrive_at: 46.215, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-405
+    role: attendee
+    config: {want: activity, arrive_at: 51.986, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-406
+    role: attendee
+    config: {want: activity, arrive_at: 18.769, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-407
+    role: attendee
+    config: {want: food, arrive_at: 16.85, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-408
+    role: attendee
+    config: {want: food, arrive_at: 22.769, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-409
+    role: attendee
+    config: {want: activity, arrive_at: 44.261, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-410
+    role: attendee
+    config: {want: food, arrive_at: 5.154, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-411
+    role: attendee
+    config: {want: activity, arrive_at: 10.09, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-412
+    role: attendee
+    config: {want: food, arrive_at: 35.564, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-413
+    role: attendee
+    config: {want: food, arrive_at: 24.878, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-414
+    role: attendee
+    config: {want: food, arrive_at: 21.522, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-415
+    role: attendee
+    config: {want: activity, arrive_at: 46.578, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-416
+    role: attendee
+    config: {want: food, arrive_at: 18.531, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-417
+    role: attendee
+    config: {want: activity, arrive_at: 34.511, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-418
+    role: attendee
+    config: {want: activity, arrive_at: 23.829, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-419
+    role: attendee
+    config: {want: food, arrive_at: 19.585, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-420
+    role: attendee
+    config: {want: food, arrive_at: 23.101, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-421
+    role: attendee
+    config: {want: food, arrive_at: 24.607, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-422
+    role: attendee
+    config: {want: activity, arrive_at: 21.519, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-423
+    role: attendee
+    config: {want: food, arrive_at: 24.576, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-424
+    role: attendee
+    config: {want: food, arrive_at: 42.655, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-425
+    role: attendee
+    config: {want: activity, arrive_at: 16.93, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-426
+    role: attendee
+    config: {want: activity, arrive_at: 14.045, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-427
+    role: attendee
+    config: {want: activity, arrive_at: 9.483, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-428
+    role: attendee
+    config: {want: food, arrive_at: 22.973, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-429
+    role: attendee
+    config: {want: food, arrive_at: 48.578, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-430
+    role: attendee
+    config: {want: food, arrive_at: 17.264, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-431
+    role: attendee
+    config: {want: food, arrive_at: 21.773, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-432
+    role: attendee
+    config: {want: food, arrive_at: 23.218, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-433
+    role: attendee
+    config: {want: activity, arrive_at: 19.837, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-434
+    role: attendee
+    config: {want: food, arrive_at: 43.2, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-435
+    role: attendee
+    config: {want: food, arrive_at: 15.396, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-436
+    role: attendee
+    config: {want: activity, arrive_at: 28.802, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-437
+    role: attendee
+    config: {want: activity, arrive_at: 53.835, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-438
+    role: attendee
+    config: {want: activity, arrive_at: 13.704, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-439
+    role: attendee
+    config: {want: food, arrive_at: 18.107, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-440
+    role: attendee
+    config: {want: food, arrive_at: 28.586, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-441
+    role: attendee
+    config: {want: activity, arrive_at: 15.897, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-442
+    role: attendee
+    config: {want: activity, arrive_at: 3.258, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-443
+    role: attendee
+    config: {want: activity, arrive_at: 19.74, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-444
+    role: attendee
+    config: {want: food, arrive_at: 14.862, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-445
+    role: attendee
+    config: {want: activity, arrive_at: 43.494, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-446
+    role: attendee
+    config: {want: activity, arrive_at: 27.913, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-447
+    role: attendee
+    config: {want: activity, arrive_at: 7.517, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-448
+    role: attendee
+    config: {want: activity, arrive_at: 24.735, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-449
+    role: attendee
+    config: {want: food, arrive_at: 21.677, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-450
+    role: attendee
+    config: {want: activity, arrive_at: 30.665, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-451
+    role: attendee
+    config: {want: activity, arrive_at: 22.513, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-452
+    role: attendee
+    config: {want: activity, arrive_at: 17.872, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-453
+    role: attendee
+    config: {want: food, arrive_at: 16.572, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-454
+    role: attendee
+    config: {want: activity, arrive_at: 4.453, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-455
+    role: attendee
+    config: {want: food, arrive_at: 24.395, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-456
+    role: attendee
+    config: {want: food, arrive_at: 17.513, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-457
+    role: attendee
+    config: {want: activity, arrive_at: 20.092, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-458
+    role: attendee
+    config: {want: food, arrive_at: 20.323, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-459
+    role: attendee
+    config: {want: activity, arrive_at: 22.996, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-460
+    role: attendee
+    config: {want: food, arrive_at: 5.942, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-461
+    role: attendee
+    config: {want: activity, arrive_at: 43.706, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-462
+    role: attendee
+    config: {want: food, arrive_at: 18.798, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-463
+    role: attendee
+    config: {want: activity, arrive_at: 25.174, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-464
+    role: attendee
+    config: {want: food, arrive_at: 23.693, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-465
+    role: attendee
+    config: {want: activity, arrive_at: 34.657, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-466
+    role: attendee
+    config: {want: food, arrive_at: 16.391, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-467
+    role: attendee
+    config: {want: activity, arrive_at: 22.057, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-468
+    role: attendee
+    config: {want: food, arrive_at: 15.347, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-469
+    role: attendee
+    config: {want: activity, arrive_at: 6.055, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-470
+    role: attendee
+    config: {want: food, arrive_at: 19.194, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-471
+    role: attendee
+    config: {want: food, arrive_at: 10.611, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-472
+    role: attendee
+    config: {want: activity, arrive_at: 29.426, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-473
+    role: attendee
+    config: {want: food, arrive_at: 34.057, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-474
+    role: attendee
+    config: {want: activity, arrive_at: 25.963, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-475
+    role: attendee
+    config: {want: food, arrive_at: 22.804, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-476
+    role: attendee
+    config: {want: food, arrive_at: 22.811, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-477
+    role: attendee
+    config: {want: food, arrive_at: 15.396, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-478
+    role: attendee
+    config: {want: activity, arrive_at: 2.922, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-479
+    role: attendee
+    config: {want: food, arrive_at: 16.861, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-480
+    role: attendee
+    config: {want: activity, arrive_at: 6.391, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-481
+    role: attendee
+    config: {want: activity, arrive_at: 52.906, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-482
+    role: attendee
+    config: {want: food, arrive_at: 25.221, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-483
+    role: attendee
+    config: {want: activity, arrive_at: 33.721, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-484
+    role: attendee
+    config: {want: food, arrive_at: 21.096, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-485
+    role: attendee
+    config: {want: food, arrive_at: 20.005, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-486
+    role: attendee
+    config: {want: activity, arrive_at: 20.931, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-487
+    role: attendee
+    config: {want: food, arrive_at: 21.527, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-488
+    role: attendee
+    config: {want: activity, arrive_at: 47.284, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-489
+    role: attendee
+    config: {want: activity, arrive_at: 23.344, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-490
+    role: attendee
+    config: {want: activity, arrive_at: 4.465, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-491
+    role: attendee
+    config: {want: activity, arrive_at: 7.103, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-492
+    role: attendee
+    config: {want: food, arrive_at: 24.029, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-493
+    role: attendee
+    config: {want: activity, arrive_at: 39.9, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-494
+    role: attendee
+    config: {want: activity, arrive_at: 36.121, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-495
+    role: attendee
+    config: {want: activity, arrive_at: 52.397, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-496
+    role: attendee
+    config: {want: activity, arrive_at: 2.381, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-497
+    role: attendee
+    config: {want: food, arrive_at: 19.638, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-498
+    role: attendee
+    config: {want: food, arrive_at: 15.44, rule: reputation, look_at: 3, balance_cents: 5000}
+  - name: att-499
+    role: attendee
+    config: {want: activity, arrive_at: 17.094, rule: reputation, look_at: 3, balance_cents: 5000}
+faults: []
+max_time: 60

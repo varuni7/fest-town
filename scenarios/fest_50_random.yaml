@@ -1,0 +1,185 @@
+name: fest
+description: Nine stalls over a twelve hour fest with a lunch rush; 50 attendees choosing by random.
+seed: 42
+validator: fest
+plugin_files: [../fest_roles.py, ../fest_trust.py, ../fest_validator.py]
+agents:
+  - name: burger-1
+    role: stall
+    config: {kind: burgers, category: food, price_cents: 250, stock: 50, quality: 0.8, balance_cents: 0}
+  - name: burger-2
+    role: stall
+    config: {kind: burgers, category: food, price_cents: 220, stock: 50, quality: 0.55, balance_cents: 0}
+  - name: burger-3
+    role: stall
+    config: {kind: burgers, category: food, price_cents: 300, stock: 50, quality: 0.35, balance_cents: 0}
+  - name: ice-cream-1
+    role: stall
+    config: {kind: ice cream, category: food, price_cents: 120, stock: 50, quality: 0.75, balance_cents: 0}
+  - name: ice-cream-2
+    role: stall
+    config: {kind: ice cream, category: food, price_cents: 150, stock: 50, quality: 0.45, balance_cents: 0}
+  - name: bake-sale
+    role: stall
+    config: {kind: bakes, category: food, price_cents: 80, stock: 50, quality: 0.65, balance_cents: 0}
+  - name: games
+    role: stall
+    config: {kind: games, category: activity, price_cents: 100, stock: 50, quality: 0.6, balance_cents: 0}
+  - name: darts
+    role: stall
+    config: {kind: darts, category: activity, price_cents: 50, stock: 50, quality: 0.5, balance_cents: 0}
+  - name: photo-booth
+    role: stall
+    config: {kind: photos, category: activity, price_cents: 200, stock: 50, quality: 0.7, balance_cents: 0}
+  - name: att-0
+    role: attendee
+    config: {want: food, arrive_at: 24.8, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-1
+    role: attendee
+    config: {want: activity, arrive_at: 51.721, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-2
+    role: attendee
+    config: {want: activity, arrive_at: 5.533, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-3
+    role: attendee
+    config: {want: food, arrive_at: 15.308, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-4
+    role: attendee
+    config: {want: food, arrive_at: 21.233, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-5
+    role: attendee
+    config: {want: food, arrive_at: 16.831, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-6
+    role: attendee
+    config: {want: activity, arrive_at: 19.868, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-7
+    role: attendee
+    config: {want: food, arrive_at: 20.411, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-8
+    role: attendee
+    config: {want: activity, arrive_at: 5.802, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-9
+    role: attendee
+    config: {want: food, arrive_at: 20.564, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-10
+    role: attendee
+    config: {want: food, arrive_at: 20.183, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-11
+    role: attendee
+    config: {want: activity, arrive_at: 25.483, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-12
+    role: attendee
+    config: {want: food, arrive_at: 20.081, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-13
+    role: attendee
+    config: {want: food, arrive_at: 19.728, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-14
+    role: attendee
+    config: {want: food, arrive_at: 20.875, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-15
+    role: attendee
+    config: {want: activity, arrive_at: 8.789, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-16
+    role: attendee
+    config: {want: food, arrive_at: 52.674, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-17
+    role: attendee
+    config: {want: food, arrive_at: 15.396, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-18
+    role: attendee
+    config: {want: food, arrive_at: 10.577, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-19
+    role: attendee
+    config: {want: activity, arrive_at: 9.346, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-20
+    role: attendee
+    config: {want: food, arrive_at: 18.862, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-21
+    role: attendee
+    config: {want: food, arrive_at: 23.165, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-22
+    role: attendee
+    config: {want: activity, arrive_at: 26.425, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-23
+    role: attendee
+    config: {want: activity, arrive_at: 24.738, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-24
+    role: attendee
+    config: {want: food, arrive_at: 16.967, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-25
+    role: attendee
+    config: {want: food, arrive_at: 19.361, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-26
+    role: attendee
+    config: {want: activity, arrive_at: 45.789, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-27
+    role: attendee
+    config: {want: activity, arrive_at: 36.445, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-28
+    role: attendee
+    config: {want: food, arrive_at: 22.027, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-29
+    role: attendee
+    config: {want: food, arrive_at: 24.08, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-30
+    role: attendee
+    config: {want: food, arrive_at: 23.405, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-31
+    role: attendee
+    config: {want: food, arrive_at: 25.12, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-32
+    role: attendee
+    config: {want: food, arrive_at: 15.477, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-33
+    role: attendee
+    config: {want: food, arrive_at: 20.067, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-34
+    role: attendee
+    config: {want: activity, arrive_at: 38.767, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-35
+    role: attendee
+    config: {want: food, arrive_at: 4.576, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-36
+    role: attendee
+    config: {want: food, arrive_at: 19.263, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-37
+    role: attendee
+    config: {want: activity, arrive_at: 22.049, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-38
+    role: attendee
+    config: {want: activity, arrive_at: 45.201, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-39
+    role: attendee
+    config: {want: activity, arrive_at: 28.812, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-40
+    role: attendee
+    config: {want: food, arrive_at: 20.845, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-41
+    role: attendee
+    config: {want: activity, arrive_at: 29.854, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-42
+    role: attendee
+    config: {want: activity, arrive_at: 30.648, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-43
+    role: attendee
+    config: {want: activity, arrive_at: 21.245, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-44
+    role: attendee
+    config: {want: activity, arrive_at: 4.766, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-45
+    role: attendee
+    config: {want: food, arrive_at: 21.747, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-46
+    role: attendee
+    config: {want: food, arrive_at: 9.007, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-47
+    role: attendee
+    config: {want: food, arrive_at: 22.367, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-48
+    role: attendee
+    config: {want: activity, arrive_at: 21.585, rule: random, look_at: 3, balance_cents: 5000}
+  - name: att-49
+    role: attendee
+    config: {want: activity, arrive_at: 30.024, rule: random, look_at: 3, balance_cents: 5000}
+faults: []
+max_time: 60

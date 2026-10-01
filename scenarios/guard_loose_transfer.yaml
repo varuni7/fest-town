@@ -1,0 +1,383 @@
+name: fest_tickets_guard_loose_transfer
+description: Three ticketed shows, box office 08:00-11:00 only, with transfers afterwards.
+seed: 42
+validator: tickets
+plugin_files: [../fest_tickets.py, ../fest_ticket_validator.py]
+agents:
+  - name: box-concert-1
+    role: box_office
+    config: {show: concert-1, capacity: 40, price_cents: 1500, sale_from: 0.0, sale_to: 15.0, balance_cents: 0}
+  - name: box-concert-2
+    role: box_office
+    config: {show: concert-2, capacity: 40, price_cents: 1200, sale_from: 0.0, sale_to: 15.0, balance_cents: 0}
+  - name: box-puppet-show
+    role: box_office
+    config: {show: puppet-show, capacity: 25, price_cents: 400, sale_from: 0.0, sale_to: 15.0, balance_cents: 0}
+  - name: fan-0
+    role: fan
+    config: {show: concert-2, buy_at: 8.89, arrive_at: 59.0, balance_cents: 9000, transfer_at: 31.33}
+  - name: fan-1
+    role: fan
+    config: {show: concert-1, buy_at: 5.86, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-2
+    role: fan
+    config: {show: puppet-show, buy_at: 31.35, arrive_at: 44.0, balance_cents: 9000, transfer_at: 37.22}
+  - name: fan-3
+    role: fan
+    config: {show: puppet-show, buy_at: 37.75, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-4
+    role: fan
+    config: {show: concert-2, buy_at: 3.48, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-5
+    role: fan
+    config: {show: concert-1, buy_at: 5.24, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-6
+    role: fan
+    config: {show: puppet-show, buy_at: 1.73, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-7
+    role: fan
+    config: {show: concert-1, buy_at: 0.61, arrive_at: 54.0, balance_cents: 9000, transfer_at: 39.9}
+  - name: fan-8
+    role: fan
+    config: {show: puppet-show, buy_at: 28.93, arrive_at: 44.0, balance_cents: 9000, transfer_at: 34.63}
+  - name: fan-9
+    role: fan
+    config: {show: concert-1, buy_at: 3.52, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-10
+    role: fan
+    config: {show: concert-1, buy_at: 6.68, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-11
+    role: fan
+    config: {show: concert-1, buy_at: 9.74, arrive_at: 54.0, balance_cents: 9000, transfer_at: 30.23}
+  - name: fan-12
+    role: fan
+    config: {show: concert-2, buy_at: 6.37, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-13
+    role: fan
+    config: {show: puppet-show, buy_at: 24.13, arrive_at: 44.0, balance_cents: 9000, transfer_at: 33.3}
+  - name: fan-14
+    role: fan
+    config: {show: puppet-show, buy_at: 13.1, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-15
+    role: fan
+    config: {show: puppet-show, buy_at: 22.92, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-16
+    role: fan
+    config: {show: concert-1, buy_at: 10.23, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-17
+    role: fan
+    config: {show: concert-1, buy_at: 10.56, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-18
+    role: fan
+    config: {show: concert-1, buy_at: 6.22, arrive_at: 54.0, balance_cents: 9000, transfer_at: 31.44}
+  - name: fan-19
+    role: fan
+    config: {show: concert-1, buy_at: 6.24, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-20
+    role: fan
+    config: {show: puppet-show, buy_at: 7.49, arrive_at: 44.0, balance_cents: 9000, transfer_at: 32.58}
+  - name: fan-21
+    role: fan
+    config: {show: concert-2, buy_at: 18.66, arrive_at: 59.0, balance_cents: 9000, transfer_at: 35.86}
+  - name: fan-22
+    role: fan
+    config: {show: concert-1, buy_at: 5.78, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-23
+    role: fan
+    config: {show: concert-2, buy_at: 11.89, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-24
+    role: fan
+    config: {show: concert-1, buy_at: 13.42, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-25
+    role: fan
+    config: {show: concert-2, buy_at: 3.72, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-26
+    role: fan
+    config: {show: concert-1, buy_at: 4.85, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-27
+    role: fan
+    config: {show: puppet-show, buy_at: 11.2, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-28
+    role: fan
+    config: {show: puppet-show, buy_at: 23.82, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-29
+    role: fan
+    config: {show: concert-1, buy_at: 6.4, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-30
+    role: fan
+    config: {show: concert-1, buy_at: 13.2, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-31
+    role: fan
+    config: {show: concert-2, buy_at: 13.52, arrive_at: 59.0, balance_cents: 9000, transfer_at: 38.82}
+  - name: fan-32
+    role: fan
+    config: {show: concert-2, buy_at: 12.07, arrive_at: 59.0, balance_cents: 9000, transfer_at: 33.79}
+  - name: fan-33
+    role: fan
+    config: {show: puppet-show, buy_at: 14.32, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-34
+    role: fan
+    config: {show: concert-2, buy_at: 24.75, arrive_at: 59.0, balance_cents: 9000, transfer_at: 30.04}
+  - name: fan-35
+    role: fan
+    config: {show: concert-2, buy_at: 14.01, arrive_at: 59.0, balance_cents: 9000, transfer_at: 36.65}
+  - name: fan-36
+    role: fan
+    config: {show: concert-1, buy_at: 4.15, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-37
+    role: fan
+    config: {show: puppet-show, buy_at: 36.79, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-38
+    role: fan
+    config: {show: concert-2, buy_at: 28.54, arrive_at: 59.0, balance_cents: 9000, transfer_at: 35.22}
+  - name: fan-39
+    role: fan
+    config: {show: puppet-show, buy_at: 14.37, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-40
+    role: fan
+    config: {show: concert-2, buy_at: 4.19, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-41
+    role: fan
+    config: {show: concert-2, buy_at: 7.93, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-42
+    role: fan
+    config: {show: puppet-show, buy_at: 8.98, arrive_at: 44.0, balance_cents: 9000, transfer_at: 37.39}
+  - name: fan-43
+    role: fan
+    config: {show: concert-1, buy_at: 1.56, arrive_at: 54.0, balance_cents: 9000, transfer_at: 30.58}
+  - name: fan-44
+    role: fan
+    config: {show: concert-2, buy_at: 8.3, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-45
+    role: fan
+    config: {show: puppet-show, buy_at: 3.22, arrive_at: 44.0, balance_cents: 9000, transfer_at: 38.64}
+  - name: fan-46
+    role: fan
+    config: {show: concert-2, buy_at: 2.91, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-47
+    role: fan
+    config: {show: concert-1, buy_at: 13.12, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-48
+    role: fan
+    config: {show: puppet-show, buy_at: 6.35, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-49
+    role: fan
+    config: {show: concert-1, buy_at: 3.41, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-50
+    role: fan
+    config: {show: puppet-show, buy_at: 12.07, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-51
+    role: fan
+    config: {show: concert-2, buy_at: 9.26, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-52
+    role: fan
+    config: {show: puppet-show, buy_at: 18.72, arrive_at: 44.0, balance_cents: 9000, transfer_at: 34.6}
+  - name: fan-53
+    role: fan
+    config: {show: concert-1, buy_at: 35.31, arrive_at: 54.0, balance_cents: 9000, transfer_at: 36.55}
+  - name: fan-54
+    role: fan
+    config: {show: concert-1, buy_at: 7.96, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-55
+    role: fan
+    config: {show: puppet-show, buy_at: 4.16, arrive_at: 44.0, balance_cents: 9000, transfer_at: 39.2}
+  - name: fan-56
+    role: fan
+    config: {show: concert-2, buy_at: 24.87, arrive_at: 59.0, balance_cents: 9000, transfer_at: 37.56}
+  - name: fan-57
+    role: fan
+    config: {show: concert-1, buy_at: 1.31, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-58
+    role: fan
+    config: {show: concert-1, buy_at: 2.14, arrive_at: 54.0, balance_cents: 9000, transfer_at: 32.75}
+  - name: fan-59
+    role: fan
+    config: {show: concert-2, buy_at: 38.13, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-60
+    role: fan
+    config: {show: concert-1, buy_at: 9.64, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-61
+    role: fan
+    config: {show: concert-1, buy_at: 2.09, arrive_at: 54.0, balance_cents: 9000, transfer_at: 31.37}
+  - name: fan-62
+    role: fan
+    config: {show: puppet-show, buy_at: 34.46, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-63
+    role: fan
+    config: {show: concert-1, buy_at: 11.45, arrive_at: 54.0, balance_cents: 9000, transfer_at: 36.08}
+  - name: fan-64
+    role: fan
+    config: {show: puppet-show, buy_at: 34.78, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-65
+    role: fan
+    config: {show: puppet-show, buy_at: 4.8, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-66
+    role: fan
+    config: {show: concert-1, buy_at: 14.03, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-67
+    role: fan
+    config: {show: concert-1, buy_at: 38.09, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-68
+    role: fan
+    config: {show: concert-1, buy_at: 10.76, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-69
+    role: fan
+    config: {show: concert-1, buy_at: 2.76, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-70
+    role: fan
+    config: {show: concert-1, buy_at: 5.72, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-71
+    role: fan
+    config: {show: concert-1, buy_at: 0.79, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-72
+    role: fan
+    config: {show: concert-1, buy_at: 12.83, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-73
+    role: fan
+    config: {show: concert-2, buy_at: 7.39, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-74
+    role: fan
+    config: {show: concert-1, buy_at: 8.99, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-75
+    role: fan
+    config: {show: concert-2, buy_at: 11.78, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-76
+    role: fan
+    config: {show: concert-2, buy_at: 9.04, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-77
+    role: fan
+    config: {show: puppet-show, buy_at: 11.19, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-78
+    role: fan
+    config: {show: puppet-show, buy_at: 7.67, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-79
+    role: fan
+    config: {show: concert-1, buy_at: 26.34, arrive_at: 54.0, balance_cents: 9000, transfer_at: 32.42}
+  - name: fan-80
+    role: fan
+    config: {show: concert-2, buy_at: 30.05, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-81
+    role: fan
+    config: {show: puppet-show, buy_at: 12.23, arrive_at: 44.0, balance_cents: 9000, transfer_at: 39.53}
+  - name: fan-82
+    role: fan
+    config: {show: puppet-show, buy_at: 14.35, arrive_at: 44.0, balance_cents: 9000, transfer_at: 35.8}
+  - name: fan-83
+    role: fan
+    config: {show: concert-2, buy_at: 38.45, arrive_at: 59.0, balance_cents: 9000, transfer_at: 33.96}
+  - name: fan-84
+    role: fan
+    config: {show: concert-2, buy_at: 30.53, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-85
+    role: fan
+    config: {show: concert-1, buy_at: 9.07, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-86
+    role: fan
+    config: {show: concert-1, buy_at: 30.18, arrive_at: 54.0, balance_cents: 9000, transfer_at: 38.55}
+  - name: fan-87
+    role: fan
+    config: {show: concert-2, buy_at: 13.19, arrive_at: 59.0, balance_cents: 9000, transfer_at: 34.75}
+  - name: fan-88
+    role: fan
+    config: {show: concert-1, buy_at: 32.79, arrive_at: 54.0, balance_cents: 9000, transfer_at: 35.16}
+  - name: fan-89
+    role: fan
+    config: {show: puppet-show, buy_at: 12.41, arrive_at: 44.0, balance_cents: 9000, transfer_at: 32.41}
+  - name: fan-90
+    role: fan
+    config: {show: concert-1, buy_at: 6.39, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-91
+    role: fan
+    config: {show: concert-1, buy_at: 24.45, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-92
+    role: fan
+    config: {show: concert-2, buy_at: 35.25, arrive_at: 59.0, balance_cents: 9000, transfer_at: 30.38}
+  - name: fan-93
+    role: fan
+    config: {show: concert-1, buy_at: 13.45, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-94
+    role: fan
+    config: {show: concert-1, buy_at: 13.42, arrive_at: 54.0, balance_cents: 9000, transfer_at: 35.77}
+  - name: fan-95
+    role: fan
+    config: {show: concert-2, buy_at: 25.38, arrive_at: 59.0, balance_cents: 9000, transfer_at: 33.89}
+  - name: fan-96
+    role: fan
+    config: {show: puppet-show, buy_at: 4.15, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-97
+    role: fan
+    config: {show: concert-1, buy_at: 2.48, arrive_at: 54.0, balance_cents: 9000, transfer_at: 38.61}
+  - name: fan-98
+    role: fan
+    config: {show: concert-1, buy_at: 4.95, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-99
+    role: fan
+    config: {show: puppet-show, buy_at: 18.7, arrive_at: 44.0, balance_cents: 9000, transfer_at: 32.12}
+  - name: fan-100
+    role: fan
+    config: {show: concert-2, buy_at: 11.15, arrive_at: 59.0, balance_cents: 9000, transfer_at: 30.01}
+  - name: fan-101
+    role: fan
+    config: {show: concert-1, buy_at: 1.63, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-102
+    role: fan
+    config: {show: puppet-show, buy_at: 6.43, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-103
+    role: fan
+    config: {show: puppet-show, buy_at: 4.18, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-104
+    role: fan
+    config: {show: concert-1, buy_at: 3.91, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-105
+    role: fan
+    config: {show: concert-1, buy_at: 9.19, arrive_at: 54.0, balance_cents: 9000, transfer_at: 33.07}
+  - name: fan-106
+    role: fan
+    config: {show: puppet-show, buy_at: 27.17, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-107
+    role: fan
+    config: {show: concert-1, buy_at: 4.17, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-108
+    role: fan
+    config: {show: concert-1, buy_at: 4.45, arrive_at: 54.0, balance_cents: 9000}
+  - name: fan-109
+    role: fan
+    config: {show: puppet-show, buy_at: 11.62, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-110
+    role: fan
+    config: {show: puppet-show, buy_at: 8.97, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-111
+    role: fan
+    config: {show: concert-1, buy_at: 6.08, arrive_at: 54.0, balance_cents: 9000, transfer_at: 35.91}
+  - name: fan-112
+    role: fan
+    config: {show: concert-2, buy_at: 7.36, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-113
+    role: fan
+    config: {show: concert-1, buy_at: 1.17, arrive_at: 54.0, balance_cents: 9000, transfer_at: 31.3}
+  - name: fan-114
+    role: fan
+    config: {show: concert-2, buy_at: 37.31, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-115
+    role: fan
+    config: {show: puppet-show, buy_at: 19.79, arrive_at: 44.0, balance_cents: 9000}
+  - name: fan-116
+    role: fan
+    config: {show: concert-1, buy_at: 14.41, arrive_at: 54.0, balance_cents: 9000, transfer_at: 34.3}
+  - name: fan-117
+    role: fan
+    config: {show: concert-2, buy_at: 20.1, arrive_at: 59.0, balance_cents: 9000}
+  - name: fan-118
+    role: fan
+    config: {show: concert-2, buy_at: 10.38, arrive_at: 59.0, balance_cents: 9000, transfer_at: 38.42}
+  - name: fan-119
+    role: fan
+    config: {show: concert-2, buy_at: 1.85, arrive_at: 59.0, balance_cents: 9000, transfer_at: 35.26}
+  - name: cheat-steal
+    role: cheat_fan
+    config: {show: concert-1, buy_at: 3.0, arrive_at: 54.0, trick: transfer_unowned, target_ticket: concert-1-t1, cheat_at: 35.0, balance_cents: 9000}
+  - name: cheat-twice
+    role: cheat_fan
+    config: {show: concert-1, buy_at: 4.0, arrive_at: 54.0, trick: double_entry, cheat_at: 56.0, balance_cents: 9000}
+faults: []
+max_time: 70

@@ -1,0 +1,137 @@
+name: gw_lost
+description: Ticketing through a gateway that settles late.
+seed: 42
+validator: gateway
+plugin_files: [../fest_gateway.py, ../fest_gateway_validator.py]
+agents:
+  - name: gw
+    role: gateway
+    config: {settle_delay: 2.0, balance_cents: 0}
+  - name: box-concert
+    role: gated_box_office
+    config: {show: concert, capacity: 60, price_cents: 1500, sale_from: 0.0, sale_to: 15.0, balance_cents: 0}
+  - name: fan-0
+    role: gated_fan
+    config: {show: concert, buy_at: 10.83, balance_cents: 9000}
+  - name: fan-1
+    role: gated_fan
+    config: {show: concert, buy_at: 4.29, balance_cents: 9000}
+  - name: fan-2
+    role: gated_fan
+    config: {show: concert, buy_at: 4.97, balance_cents: 9000}
+  - name: fan-3
+    role: gated_fan
+    config: {show: concert, buy_at: 2.83, balance_cents: 9000}
+  - name: fan-4
+    role: gated_fan
+    config: {show: concert, buy_at: 2.6, balance_cents: 9000}
+  - name: fan-5
+    role: gated_fan
+    config: {show: concert, buy_at: 1.72, balance_cents: 9000}
+  - name: fan-6
+    role: gated_fan
+    config: {show: concert, buy_at: 4.31, balance_cents: 9000}
+  - name: fan-7
+    role: gated_fan
+    config: {show: concert, buy_at: 7.63, balance_cents: 9000}
+  - name: fan-8
+    role: gated_fan
+    config: {show: concert, buy_at: 1.04, balance_cents: 9000}
+  - name: fan-9
+    role: gated_fan
+    config: {show: concert, buy_at: 8.46, balance_cents: 9000}
+  - name: fan-10
+    role: gated_fan
+    config: {show: concert, buy_at: 4.72, balance_cents: 9000}
+  - name: fan-11
+    role: gated_fan
+    config: {show: concert, buy_at: 4.41, balance_cents: 9000}
+  - name: fan-12
+    role: gated_fan
+    config: {show: concert, buy_at: 10.0, balance_cents: 9000}
+  - name: fan-13
+    role: gated_fan
+    config: {show: concert, buy_at: 6.29, balance_cents: 9000}
+  - name: fan-14
+    role: gated_fan
+    config: {show: concert, buy_at: 4.47, balance_cents: 9000}
+  - name: fan-15
+    role: gated_fan
+    config: {show: concert, buy_at: 6.29, balance_cents: 9000}
+  - name: fan-16
+    role: gated_fan
+    config: {show: concert, buy_at: 8.75, balance_cents: 9000}
+  - name: fan-17
+    role: gated_fan
+    config: {show: concert, buy_at: 1.63, balance_cents: 9000}
+  - name: fan-18
+    role: gated_fan
+    config: {show: concert, buy_at: 11.73, balance_cents: 9000}
+  - name: fan-19
+    role: gated_fan
+    config: {show: concert, buy_at: 1.25, balance_cents: 9000}
+  - name: fan-20
+    role: gated_fan
+    config: {show: concert, buy_at: 9.25, balance_cents: 9000}
+  - name: fan-21
+    role: gated_fan
+    config: {show: concert, buy_at: 10.29, balance_cents: 9000}
+  - name: fan-22
+    role: gated_fan
+    config: {show: concert, buy_at: 1.2, balance_cents: 9000}
+  - name: fan-23
+    role: gated_fan
+    config: {show: concert, buy_at: 9.67, balance_cents: 9000}
+  - name: fan-24
+    role: gated_fan
+    config: {show: concert, buy_at: 5.03, balance_cents: 9000}
+  - name: fan-25
+    role: gated_fan
+    config: {show: concert, buy_at: 7.36, balance_cents: 9000}
+  - name: fan-26
+    role: gated_fan
+    config: {show: concert, buy_at: 1.1, balance_cents: 9000}
+  - name: fan-27
+    role: gated_fan
+    config: {show: concert, buy_at: 1.51, balance_cents: 9000}
+  - name: fan-28
+    role: gated_fan
+    config: {show: concert, buy_at: 2.99, balance_cents: 9000}
+  - name: fan-29
+    role: gated_fan
+    config: {show: concert, buy_at: 11.51, balance_cents: 9000}
+  - name: fan-30
+    role: gated_fan
+    config: {show: concert, buy_at: 3.16, balance_cents: 9000}
+  - name: fan-31
+    role: gated_fan
+    config: {show: concert, buy_at: 9.31, balance_cents: 9000}
+  - name: fan-32
+    role: gated_fan
+    config: {show: concert, buy_at: 11.23, balance_cents: 9000}
+  - name: fan-33
+    role: gated_fan
+    config: {show: concert, buy_at: 11.36, balance_cents: 9000}
+  - name: fan-34
+    role: gated_fan
+    config: {show: concert, buy_at: 4.79, balance_cents: 9000}
+  - name: fan-35
+    role: gated_fan
+    config: {show: concert, buy_at: 4.9, balance_cents: 9000}
+  - name: fan-36
+    role: gated_fan
+    config: {show: concert, buy_at: 6.77, balance_cents: 9000}
+  - name: fan-37
+    role: gated_fan
+    config: {show: concert, buy_at: 9.53, balance_cents: 9000}
+  - name: fan-38
+    role: gated_fan
+    config: {show: concert, buy_at: 2.19, balance_cents: 9000}
+  - name: fan-39
+    role: gated_fan
+    config: {show: concert, buy_at: 9.23, balance_cents: 9000}
+faults:
+  - action: drop
+    kind: payment_captured
+    nth: 1
+max_time: 70

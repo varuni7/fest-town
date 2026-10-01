@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fest-town"
+version = "0.1.0"
+description = "A college fest as a nandatown scenario: stalls, ticketing, and a payment gateway that settles late."
+requires-python = ">=3.11"
+dependencies = ["nandatown"]
+
+[tool.setuptools]
+py-modules = [
+    "fest_roles", "fest_trust", "fest_validator",
+    "fest_tickets", "fest_ticket_validator",
+    "fest_gateway", "fest_gateway_validator",
+]
