@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midway</title>
+<meta name="description" content="A college fest as a multi-agent simulation. Every stall, student, box office and stage is its own agent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet">
+<style>
+ :root{--bg:#ffffff;--paper:#faf8f3;--line:#ded8ca;--ink:#1b1d24;
+       --dim:#6d7283;--over:#cf4233;--under:#2f6fc4;--gold:#c98b1b;
+       --px:"Silkscreen",ui-monospace,monospace;}
+ *{box-sizing:border-box;margin:0}
+ body{background:var(--bg);color:var(--ink);
+      font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;
+      padding:28px 16px 60px;max-width:860px;margin:0 auto}
+ h1{font-family:var(--px);font-size:30px;font-weight:700;letter-spacing:3px}
+ .tag{color:var(--dim);font-size:13px;margin:6px 0 26px}
+ h2{font-family:var(--px);font-size:12px;font-weight:400;letter-spacing:2px;
+    color:var(--dim);margin:34px 0 12px;
+    border-top:1px solid var(--line);padding-top:14px}
+ p{margin-bottom:12px}
+ a{color:var(--under)}
+ .runs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:4px 0 8px}
+ .run{display:block;background:var(--paper);border:1px solid var(--line);
+      border-radius:8px;padding:16px 16px 14px;text-decoration:none;
+      color:var(--ink)}
+ .run:hover{border-color:var(--dim)}
+ .run .r{font-family:var(--px);font-size:26px;display:block;margin-bottom:4px}
+ .run .w{font-size:13px;font-weight:700}
+ .run .d{font-size:12.5px;color:var(--dim);margin-top:5px}
+ .bad .r{color:var(--over)} .good .r{color:#1f7a4d}
+ table{border-collapse:collapse;width:100%;font-size:13.5px;margin:6px 0 10px}
+ th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line)}
+ th{font-family:var(--px);font-size:10px;letter-spacing:1px;color:var(--dim);
+    font-weight:400}
+ td.n{font-variant-numeric:tabular-nums}
+ .over{color:var(--over);font-weight:700}
+ .under{color:#1f7a4d;font-weight:700}
+ pre{background:var(--paper);border:1px solid var(--line);border-radius:6px;
+     padding:12px 14px;overflow:auto;font-size:13px;line-height:1.5}
+ ul{margin:0 0 12px 20px} li{margin-bottom:5px}
+ .foot{color:var(--dim);font-size:12.5px;margin-top:34px;
+       border-top:1px solid var(--line);padding-top:14px}
+ @media (max-width:620px){.runs{grid-template-columns:1fr}h1{font-size:22px}}
+</style></head><body>
+
+<h1>MIDWAY</h1>
+<div class="tag">A college fest as a multi-agent simulation. Every stall,
+student, box office and stage is its own agent, nobody can see the whole
+ground, and the failures worth finding are the ones no single agent is
+doing wrong.</div>
+
+<h2>WATCH A DAY</h2>
+<p>Same seed, same crowd, same attack on the ratings. One component
+swapped. A full fest day plays in three minutes.</p>
+<div class="runs">
+  <a class="run bad" href="naive.html">
+    <span class="r">r = -0.49</span>
+    <span class="w">Ratings as they are</span>
+    <div class="d">Anyone can rate anything. The worst stall takes 49% of
+    the trade and the best one sells nothing.</div>
+  </a>
+  <a class="run good" href="earned.html">
+    <span class="r">r = +0.83</span>
+    <span class="w">Ratings that must be earned</span>
+    <div class="d">A rating counts only from someone who paid. The order
+    goes back to roughly honest.</div>
+  </a>
+</div>
+<p style="font-size:13px;color:var(--dim)">r is the correlation between
+what a stall's food is actually worth and what the crowd rates it. 1.0 is
+a crowd that is never wrong. Below zero, following the ratings is worse
+than picking at random.</p>
+
+<h2>THE RESULT</h2>
+<table>
+<tr><th></th><th>Ratings as they are</th><th>Earned ratings</th></tr>
+<tr><td>Quality against reputation</td>
+    <td class="n over">-0.49</td><td class="n under">+0.83</td></tr>
+<tr><td>Top seller</td><td>burger-3, the worst food</td>
+    <td>burger-1, the best food</td></tr>
+<tr><td>Its share of trade</td><td class="n">49%</td><td class="n">39%</td></tr>
+<tr><td>burger-1, the best stall</td><td>sold nothing all day</td>
+    <td class="n">47 sales</td></tr>
+<tr><td>Ratings from non-buyers ignored</td>
+    <td class="n">0 of 57</td><td class="n">57 of 57</td></tr>
+<tr><td>Money invariants</td><td>all passed</td><td>all passed</td></tr>
+</table>
+<p>The left column is the part people do not expect. No show was
+oversold, every transfer was made by the person holding the ticket, every
+refund went back at the price paid, and 1,920,000 cents were conserved to
+the cent. There is no component you can point at and call broken. The
+failure exists only at the level of the whole ground over a whole day,
+which is why it takes a simulation to find rather than a test suite.</p>
+
+<h2>WHAT IS SIMULATED</h2>
+<ul>
+<li><b>Discovering stalls.</b> Stalls publish a card with their price and
+how many they have served, which is a visible queue: you can see a crowd
+without knowing whether the food is good. A student samples three stalls
+and picks one. Swapping that one rule roughly triples trade
+concentration, and which signal it is barely matters.</li>
+<li><b>Tickets.</b> A box office that sells in a window, holds the
+ownership register, agrees to transfers, takes refunds and admits at the
+gate. Nine invariants, all computed from the event log rather than read
+off the box office's own record.</li>
+<li><b>A fake payment gateway.</b> The internal ledger moves money
+atomically, which hides every failure worth testing. The gateway does
+not: a webhook arrives late, or twice, or never.</li>
+<li><b>Reputation gaming.</b> One stall rates its rivals down 25 times
+and four accounts praise it eight times each, none of them having bought
+anything.</li>
+<li><b>Stage slot allocation.</b> Stages publish slots, bands bid, and
+the winner's money sits in escrow until it has played. On an honest run,
+three of eight slots sat empty with live bids on them, because a band
+that wins two gets one declined and a declined slot is never re-offered
+to the runner-up.</li>
+</ul>
+
+<h2>RUN IT YOURSELF</h2>
+<pre>pip install -e .
+
+nandatown run scenarios/midway_naive.yaml     # r = -0.49
+nandatown run scenarios/midway_earned.yaml    # r = +0.83
+nandatown run scenarios/stage_clean.yaml
+python fest_viz.py runs/&lt;bundle&gt; out.html      # rebuilds either page
+
+python sweep.py                               # the choice-rule table</pre>
+<p>Every run writes an evidence bundle, and both pages above are
+generated from a bundle alone, with no server and no network. Hand someone
+a bundle and they can watch a day they did not run.</p>
+
+<div class="foot">Built on <a
+href="https://github.com/projnanda/nandatown">nandatown</a>, attached
+through its plugin points rather than forked. Inspired by <a
+href="https://arxiv.org/abs/2304.03442">Generative Agents</a>, with one
+difference that matters: nothing here is judged by reading a transcript.
+Every claim is a check computed from the event log.</div>
+
+</body></html>
