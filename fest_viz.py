@@ -5,10 +5,9 @@ server, no assets, no network: the whole fest travels in the file. Give
 it more than one bundle and the page carries a switch between them,
 which is how the same day under two trust layers sits side by side.
 
-Three panels. The ground, where people walk to the stall they chose.
-Belief against quality, which is the result: red means a stall is
-believed better than it is. The crowd strip, which is how many people
-were on the ground each hour.
+The page is the fest ground. People come through the gate, walk to the
+stall they picked, and fill the venues, with a running log of what the
+agents are doing to each other.
 
     python fest_viz.py runs/sim-aaa runs/sim-bbb -o index.html
 """
@@ -25,9 +24,9 @@ MINS_PER_UNIT = 12.0   # one unit of logical time
 PAGE = """<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Midway</title>
+<title>Fest Town</title>
 <meta name="description" content="A college fest as a multi-agent
- simulation. Watch a whole day in three minutes.">
+ simulation. A whole day plays in three minutes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap"
       rel="stylesheet">
@@ -41,6 +40,8 @@ PAGE = """<!DOCTYPE html>
       font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;
       padding:16px 14px 44px;max-width:1040px;margin:0 auto}
  h1{font-family:var(--px);font-size:21px;font-weight:700;letter-spacing:3px}
+ .tag{color:var(--dim);font-size:12.5px;margin:5px 0 0;
+      font-family:var(--px);letter-spacing:1px}
  ol.why{margin:9px 0 14px 19px;font-size:12.5px;color:var(--dim);
         line-height:1.5}
  ol.why li{margin-bottom:3px}
@@ -68,14 +69,6 @@ PAGE = """<!DOCTYPE html>
      image-rendering:pixelated;shape-rendering:crispEdges;
      border:1px solid var(--line);border-radius:6px}
  #stage{background:var(--sky)}
- #panel,#crowd{background:var(--paper)}
- .rbox{display:flex;gap:10px;align-items:baseline;margin:8px 0 4px;
-       flex-wrap:wrap}
- .rbox .big{font-family:var(--px);font-size:18px}
- .rbox .what{color:var(--dim);font-size:11.5px}
- .legend{color:var(--dim);font-size:11.5px;margin-top:7px}
- .legend .sw{display:inline-block;width:9px;height:9px;margin-right:4px;
-   border-radius:1px}
  #log{margin-top:10px;height:92px;overflow:auto;background:var(--paper);
       border:1px solid var(--line);border-radius:6px;padding:8px 11px;
       font-size:12px;color:var(--dim)}
@@ -86,22 +79,16 @@ PAGE = """<!DOCTYPE html>
  @media (max-width:620px){h1{font-size:16px}body{padding:14px 10px 36px}}
 </style></head><body>
 
-<h1>MIDWAY</h1>
+<h1>FEST TOWN</h1>
+<div class="tag">a college fest, simulated</div>
 <ol class="why">
-<li>A college fest where every stall, student, box office, stage and band
-is its own agent, and nothing can see the whole ground.</li>
-<li>Simulated: students discovering stalls from published cards, tickets
-issued, passed on and refunded through a fake payment gateway, stalls
-rated by students, and stage slots auctioned off to bands.</li>
-<li>One stall rates its rivals down 25 times while four accounts praise
-it eight times each. None of the five buys anything.</li>
-<li>The two runs below are the same seed, same crowd, same attack. The
-only difference: whether a rating counts from someone who never paid.</li>
-<li>Every money check passes in both. No show oversold, no unauthorised
-transfer, every refund at the price paid, every cent conserved.</li>
-<li><b>And in the first run the worst food takes 49% of the trade while
-the best stall sells nothing.</b> Reading the ratings does worse than
-picking at random.</li>
+<li>Every stall, student, box office, stage and band is its own agent.
+Nothing can see the whole ground.</li>
+<li>Students find stalls from the cards stalls publish, tickets are
+issued, passed on and refunded through a fake payment gateway, students
+rate the stalls they buy from, and bands bid for stage slots.</li>
+<li>A whole fest day plays here in three minutes. Watch people come
+through the gate, pick a stall, and fill the venues.</li>
 </ol>
 
 <div class="tabs" id="tabs" role="tablist"></div>
@@ -120,37 +107,12 @@ picking at random.</li>
 
 <svg id="stage" viewBox="0 0 960 400" role="img"
      aria-label="The fest ground: stages at the top, stalls along the
-     midway, people walking up from the gate to the stall they picked."></svg>
-
-<h2>WHO IS ON THE GROUND</h2>
-<svg id="crowd" viewBox="0 0 960 64" role="img"
-     aria-label="How many people arrived in each hour of the day."></svg>
-
-<h2>WHAT THE CROWD BELIEVES</h2>
-<div class="rbox">
-  <span class="big" id="rval">r = n/a</span>
-  <span class="what">correlation between what a stall is worth and what it
-  is rated. 1.0 is a crowd that is never wrong, 0 is noise, and below zero
-  the ratings point the wrong way.</span>
-</div>
-<svg id="panel" viewBox="0 0 960 200" role="img"
-     aria-label="One row per stall comparing where it belongs on quality
-     with where the crowd put it, and its share of all sales."></svg>
-<div class="legend">
-  Each row places a stall twice on one line of places. The
-  <span class="sw" style="background:#1b1d24"></span>grey notch is where it
-  belongs on quality, the coloured block is where the crowd put it.
-  <span class="sw" style="background:#cf4233"></span>Red is rated above
-  where it belongs,
-  <span class="sw" style="background:#2f6fc4"></span>blue below.
-</div>
+     avenue, people walking up from the gate to the stall they picked."></svg>
 
 <div id="log"></div>
 
-<div class="foot">Scripted agents, so a day is repeatable and costs
-nothing. Every run writes an evidence bundle and this page is built from
-one, with no server and no network, so anyone handed a bundle can watch a
-day they did not run. Code, scenarios and the checks:
+<div class="foot">Built from one run's evidence bundle, with no server and
+no network behind it. Code and scenarios:
 <a href="https://github.com/varuni7/fest-town">github.com/varuni7/fest-town</a>.</div>
 
 <script>
@@ -160,12 +122,8 @@ const REAL = 180;                             // 3 minutes at 1x
 const W = 960, PX = 4, pad = 26;
 const BASE = 300, GATE = 382;
 const OVER = '#cf4233', UNDER = '#2f6fc4', INK = '#1b1d24', DIM = '#6d7283';
-const AX0 = 132, AXW = 452, SH0 = 640, SHW = 230;
-const CX = 36, CW = W - 52;
 
 const svg = document.getElementById('stage');
-const pn  = document.getElementById('panel');
-const cs  = document.getElementById('crowd');
 const log = document.getElementById('log');
 
 function el(t,a,p){const e=document.createElementNS(NS,t);
@@ -199,17 +157,15 @@ function stageBox(g,cx,base,w){
 }
 
 /* ---------------------------------------------- state per run ----- */
-let D = null, boxes = {}, venues = {}, rows = {}, N = 0;
-let head = null, liveN = null, layer = null;
+let D = null, boxes = {}, venues = {}, N = 0;
+let layer = null;
 let t = 0, playing = true, idx = 0, speed = 1, dots = [];
 let arrived = 0, totalSales = 0, last = performance.now();
 
-const place = i => N>1 ? AX0 + (i/(N-1))*AXW : AX0 + AXW/2;
-
 function scene(run){
   D = run; N = D.stalls.length;
-  boxes = {}; venues = {}; rows = {}; dots = [];
-  clear(svg); clear(pn); clear(cs); log.innerHTML = '';
+  boxes = {}; venues = {}; dots = [];
+  clear(svg); log.innerHTML = '';
 
   el('rect',{x:0,y:BASE,width:W,height:400-BASE,fill:'#e8dfcb'},svg);
   el('rect',{x:0,y:BASE,width:W,height:2,fill:'#cfc4a8'},svg);
@@ -233,90 +189,11 @@ function scene(run){
   label(svg,W/2,396,'G A T E',9,DIM);
   layer = el('g',{},svg);
 
-  // the crowd strip
-  const peak = Math.max(1,...D.crowd.map(b=>b.n));
-  const bw = CW/D.crowd.length;
-  D.crowd.forEach((b,i)=>{
-    const h = Math.max(1,Math.round(b.n/peak*38));
-    el('rect',{x:Math.round(CX+i*bw)+1,y:46-h,
-      width:Math.max(2,Math.round(bw)-2),height:h,fill:'#c9d6e4'},cs);
-  });
-  el('line',{x1:CX,x2:CX+CW,y1:46,y2:46,stroke:'#ded8ca','stroke-width':1},cs);
-  label(cs,CX,12,String(peak)+' PEAK/HR',8,DIM,'start');
-  label(cs,CX,60,D.open,8,DIM,'start');
-  label(cs,CX+CW,60,D.close,8,DIM,'end');
-  head  = el('rect',{x:CX,y:6,width:2,height:40,fill:'#c98b1b'},cs);
-  liveN = label(cs,CX+CW,12,'0 ARRIVED',8,'#c98b1b','end');
-
-  // belief against quality, one row per stall
-  pn.setAttribute('viewBox','0 0 960 '+(26+N*26+10));
-  D.stalls.forEach((s,i)=>{
-    const y = 26 + i*26, g = el('g',{},pn);
-    label(g,AX0-12,y+4,s.name.toUpperCase(),9,INK,'end');
-    el('rect',{x:AX0,y:y-1,width:AXW,height:2,fill:'#eae5d9'},g);
-    rows[s.name]={y,q:s.quality,score:null,
-      band:el('rect',{x:AX0,y:y-3,width:0,height:6,fill:OVER,
-                      opacity:0.7},g),
-      qt:el('rect',{x:AX0-1,y:y-9,width:3,height:18,fill:INK,
-                    opacity:0.2},g),
-      mark:el('rect',{x:AX0-3,y:y-7,width:6,height:14,fill:DIM,
-                      opacity:0},g),
-      gap:label(g,AX0+AXW+46,y+4,'',9,DIM,'end'),
-      share:el('rect',{x:SH0,y:y-5,width:0,height:10,fill:s.hue},g),
-      pct:label(g,SH0+SHW+28,y+4,'0%',9,DIM,'end')};
-  });
-  for(let i=0;i<N;i++) el('rect',{x:place(i),y:20,width:1,height:4,
-    fill:'#ded8ca'},pn);
-  label(pn,AX0,14,'WORST',8,DIM,'start');
-  label(pn,AX0+AXW,14,'BEST',8,DIM,'end');
-  label(pn,SH0,14,'SHARE OF ALL SALES',8,DIM,'start');
-
   t = 0; idx = 0; arrived = 0; totalSales = 0; playing = true;
   // Without this the first frame after a switch sees the gap since the
   // last one as elapsed fest time and jumps the clock.
   last = performance.now();
   document.getElementById('play').textContent = 'pause';
-  redrawPanel();
-}
-
-// Both sides sit on one axis of places, so the band is a number of
-// places and not a rating count held up against a quality score.
-function ranks(vals){
-  const order = vals.map((v,i)=>[v,i]).sort((a,b)=>a[0]-b[0]);
-  const out = new Array(vals.length);
-  order.forEach((p,i)=>{out[p[1]]=i;});
-  return out;
-}
-function pearson(a,b){
-  const n=a.length; if(n<2) return null;
-  const ma=a.reduce((x,y)=>x+y,0)/n, mb=b.reduce((x,y)=>x+y,0)/n;
-  let sab=0,sa=0,sb=0;
-  for(let i=0;i<n;i++){const da=a[i]-ma,db=b[i]-mb;
-    sab+=da*db; sa+=da*da; sb+=db*db;}
-  return (sa&&sb) ? sab/Math.sqrt(sa*sb) : null;
-}
-function redrawPanel(){
-  const live = D.stalls.filter(s=>rows[s.name].score!==null);
-  const qr = ranks(live.map(s=>s.quality));
-  const br = ranks(live.map(s=>rows[s.name].score));
-  live.forEach((s,i)=>{
-    const r=rows[s.name], qx=place(qr[i]), bx=place(br[i]), d=br[i]-qr[i];
-    r.qt.setAttribute('x',qx-1); r.qt.setAttribute('opacity',0.85);
-    r.mark.setAttribute('x',bx-3); r.mark.setAttribute('opacity',1);
-    r.mark.setAttribute('fill', d>0?OVER : d<0?UNDER : DIM);
-    r.band.setAttribute('x',Math.min(qx,bx));
-    r.band.setAttribute('width',Math.abs(qx-bx));
-    r.band.setAttribute('fill', d>0?OVER:UNDER);
-    r.gap.textContent = d===0 ? 'right' :
-      (d>0?'+':'')+d+(Math.abs(d)===1?' place':' places');
-    r.gap.setAttribute('fill', d>0?OVER : d<0?UNDER : DIM);
-  });
-  const rr = pearson(live.map(s=>s.quality),
-                     live.map(s=>rows[s.name].score));
-  const out = document.getElementById('rval');
-  if(rr===null){out.textContent='r = n/a'; out.style.color=DIM; return;}
-  out.textContent = 'r = '+(rr>=0?'+':'')+rr.toFixed(2);
-  out.style.color = rr>=0.5 ? '#1f7a4d' : rr>=0 ? '#c98b1b' : OVER;
 }
 
 /* ------------------------------------------------- playback ------- */
@@ -329,21 +206,14 @@ function walker(x1,y1,fill){
   dots.push({e:d,x0:W/2,y0:GATE,x1:x1,y1:y1,born:t});
   arrived++;
 }
-function shares(){
-  for(const k in rows){const r=rows[k], b=boxes[k];
-    const f = totalSales ? b.n/totalSales : 0;
-    r.share.setAttribute('width',f*SHW);
-    r.pct.textContent=Math.round(f*100)+'%';}
-}
 function fmt(lt){const m=Math.round(ALL.t0*60+lt*ALL.mins);
   return String(Math.floor(m/60)).padStart(2,'0')+':'+
          String(Math.round(m%60)).padStart(2,'0');}
 function apply(e){
-  const b=boxes[e.s], r=rows[e.s];
+  const b=boxes[e.s];
   if(e.k==='considered' && b){ walker(b.x,BASE+14,'#36405c'); }
   else if(e.k==='bought' && b){ b.n++; totalSales++;
-    b.sold.textContent=b.n+' sold'; shares(); }
-  else if(e.k==='rep' && r){ r.score = e.v; redrawPanel(); }
+    b.sold.textContent=b.n+' sold'; }
   else if(e.k==='ticket'){const v=venues[e.s];
     if(v){v.sold++; v.seats.textContent=v.sold+'/'+v.cap;}}
   else if(e.k==='refund'){const v=venues[e.s];
@@ -369,8 +239,6 @@ function frame(now){
     d.e.setAttribute('x', d.x0+(d.x1-d.x0)*k);
     d.e.setAttribute('y', d.y0+(d.y1-d.y0)*k);
     if(k>=1){d.e.remove(); return false;} return true;});
-  head.setAttribute('x', CX + (t/END)*CW);
-  liveN.textContent = arrived+' ARRIVED';
   document.getElementById('clock').textContent=fmt(t);
   document.getElementById('scrub').value=Math.round(t/END*1000);
   requestAnimationFrame(frame);
@@ -530,6 +398,10 @@ def build(bundles: list[str], out: str) -> str:
         run = one_run(b)
         run["headline"], run["label"], run["tone"] = describe(run)
         run["slug"] = run["name"].split("_")[-1]
+        # describe() needed the rating scores; the page does not draw
+        # them, so they do not travel.
+        run["ev"] = [e for e in run["ev"] if e["k"] != "rep"]
+        run.pop("crowd", None)
         runs.append(run)
     data = {"t0": T0_HOUR, "mins": MINS_PER_UNIT, "runs": runs}
     pathlib.Path(out).write_text(PAGE.replace("__DATA__", json.dumps(data)))
