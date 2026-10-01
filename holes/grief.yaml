@@ -1,0 +1,10 @@
+name: grief
+description: One agent drives a stranger's reputation down without trading.
+seed: 1
+validator: holes
+plugin_files: [holes.py]
+agents:
+  - {name: victim, role: sitter, config: {balance_cents: 0}}
+  - {name: griefer, role: griefer, config: {target: victim, times: 50, balance_cents: 0}}
+faults: []
+max_time: 3

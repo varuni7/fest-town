@@ -1,0 +1,12 @@
+name: negative_bid
+description: A negative bid wins a lowest-bid contract-net auction.
+seed: 1
+validator: holes
+plugin_files: [holes.py]
+agents:
+  - {name: organiser, role: issuer, config: {balance_cents: 0}}
+  - {name: honest-1, role: bidder, config: {cents: 4000, balance_cents: 0}}
+  - {name: honest-2, role: bidder, config: {cents: 3500, balance_cents: 0}}
+  - {name: cheat, role: bidder, config: {cents: -100000, balance_cents: 0}}
+faults: []
+max_time: 3

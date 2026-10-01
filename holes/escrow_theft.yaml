@@ -1,0 +1,10 @@
+name: escrow_theft
+description: An agent that is not a party to an escrow releases it to itself.
+seed: 1
+validator: holes
+plugin_files: [holes.py]
+agents:
+  - {name: buyer, role: payer, config: {balance_cents: 5000}}
+  - {name: stranger, role: thief, config: {balance_cents: 0}}
+faults: []
+max_time: 3
