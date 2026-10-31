@@ -66,8 +66,11 @@ class _Brain:
                                  {"role": "user", "content": prompt}]})
                 r.raise_for_status()
                 cls.calls += 1
-                return (r.json()["choices"][0]["message"]["content"]
-                        or "").strip(), "ok"
+                # A thinking model that spends its whole budget reasoning
+                # returns a message with no content at all. That is an
+                # answer we did not get, not a crash.
+                msg = r.json()["choices"][0].get("message") or {}
+                return (msg.get("content") or "").strip(), "ok"
             except (httpx.HTTPStatusError, httpx.TransportError) as exc:
                 resp = getattr(exc, "response", None)
                 status = getattr(resp, "status_code", None)
