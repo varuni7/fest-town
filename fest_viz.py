@@ -31,107 +31,119 @@ PAGE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap"
       rel="stylesheet">
 <style>
- :root{--bg:#ffffff;--paper:#faf8f3;--line:#ded8ca;--ink:#1b1d24;
-       --dim:#6d7283;--over:#cf4233;--under:#2f6fc4;--good:#1f7a4d;
-       --gold:#c98b1b;--sky:#eef4fa;--ground:#e8dfcb;
-       --px:"Silkscreen",ui-monospace,monospace;}
+ :root{
+   --bg:#0b0d12; --panel:#141821; --panel2:#1a1f2b; --line:#262c3a;
+   --ink:#eef1f7; --dim:#949db4; --faint:#6b7488;
+   --over:#ff6b5a; --under:#5b9dff; --good:#3ddc97; --gold:#ffc44d;
+   --sky:#0e1420; --px:"Silkscreen",ui-monospace,monospace;
+   --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,
+        "Helvetica Neue",Arial,sans-serif;
+   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+ }
  *{box-sizing:border-box;margin:0}
- body{background:var(--bg);color:var(--ink);
-      font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;
-      padding:16px 14px 44px;max-width:1040px;margin:0 auto}
- h1{font-family:var(--px);font-size:21px;font-weight:700;letter-spacing:3px}
- .tag{color:var(--dim);font-size:12.5px;margin:5px 0 0;
-      font-family:var(--px);letter-spacing:1px}
- ol.why{margin:9px 0 14px 19px;font-size:12.5px;color:var(--dim);
-        line-height:1.5}
- ol.why li{margin-bottom:3px}
- ol.why b{color:var(--ink);font-weight:700}
- .who{border-left:2px solid var(--line);padding:1px 0 1px 11px;
-      margin:0 0 15px 2px;font-size:12.5px;color:var(--dim);
-      line-height:1.5}
- .who p{margin-bottom:5px}
- .who b{color:var(--ink);font-weight:700}
- .who code{background:var(--paper);border:1px solid var(--line);
-   border-radius:3px;padding:0 3px;font-size:11.5px}
- .cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(216px,1fr));
-       gap:9px;margin-bottom:6px}
- .who2{display:flex;gap:9px;align-items:flex-start;background:var(--paper);
-       border:1px solid var(--line);border-radius:6px;padding:8px 10px}
- .who2 svg{flex:0 0 28px;width:28px;height:28px;border:0;border-radius:0;
-           background:none}
- .who2 b{font-family:var(--px);font-size:9.5px;letter-spacing:.5px;
-         display:block;margin-bottom:2px}
- .who2 span{font-size:11.5px;color:var(--dim);line-height:1.4}
- .cheat .who2{background:#fdf4f2;border-color:#f0cfc8}
- .cheat b{color:var(--over)}
- table.contracts{border-collapse:collapse;width:100%;font-size:12.5px;
-   margin-bottom:6px}
- table.contracts th,table.contracts td{text-align:left;padding:6px 9px;
-   border-bottom:1px solid var(--line);vertical-align:top}
- table.contracts th{font-family:var(--px);font-size:9px;letter-spacing:1px;
-   color:var(--dim);font-weight:400}
- td.held{color:#1f7a4d;white-space:nowrap}
- td.broke{color:var(--over);white-space:nowrap}
- @media (max-width:560px){.cast{grid-template-columns:1fr}
-   table.contracts th:nth-child(2),table.contracts td:nth-child(2){display:none}}
- h2{font-family:var(--px);font-size:10px;font-weight:400;letter-spacing:2px;
-    color:var(--dim);margin:16px 0 6px}
- .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
- .tab{background:var(--paper);border:1px solid var(--line);border-radius:6px;
-      padding:7px 13px;cursor:pointer;font:inherit;font-size:12.5px;
-      text-align:left;line-height:1.35}
- .tab:hover{border-color:var(--dim)}
- .tab[aria-selected="true"]{border-color:var(--ink);background:#fff;
-   box-shadow:inset 0 0 0 1px var(--ink)}
- .tab .k{font-family:var(--px);font-size:14px;display:block}
- .tab .v{color:var(--dim);font-size:11.5px}
- .tab.bad .k{color:var(--over)} .tab.good .k{color:var(--good)}
- .bar{display:flex;gap:11px;align-items:center;margin:10px 0;flex-wrap:wrap}
- button,select{background:var(--paper);color:var(--ink);
-   border:1px solid var(--line);border-radius:4px;padding:5px 11px;
-   font:inherit;font-size:13px;cursor:pointer}
- button:hover{border-color:var(--dim)}
- #clock{font-size:20px;font-variant-numeric:tabular-nums;min-width:70px}
- #scrub{flex:1;min-width:150px;accent-color:var(--gold)}
+ html{-webkit-text-size-adjust:100%}
+ body{background:var(--bg);color:var(--ink);font:400 15px/1.65 var(--ui);
+      padding:40px 20px 72px;max-width:980px;margin:0 auto;
+      -webkit-font-smoothing:antialiased}
+ h1{font-family:var(--px);font-size:clamp(22px,4.5vw,34px);font-weight:400;
+    letter-spacing:.06em;color:var(--ink);line-height:1.1}
+ .tag{color:var(--gold);font-size:12px;margin-top:10px;letter-spacing:.14em;
+      text-transform:uppercase;font-weight:600}
+ .lede{margin:22px 0 0;max-width:68ch}
+ .lede p{color:var(--dim);margin-bottom:10px}
+ .lede p:last-child{margin-bottom:0}
+ .lede b{color:var(--ink);font-weight:600}
+ h2{font-size:11px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--faint);
+    margin:44px 0 14px;display:flex;align-items:center;gap:12px}
+ h2::after{content:"";flex:1;height:1px;background:var(--line)}
+ .note{border-left:2px solid var(--line);padding:2px 0 2px 16px;
+       margin:22px 0 0;color:var(--dim);font-size:13.5px;max-width:68ch}
+ .note p{margin-bottom:8px} .note p:last-child{margin-bottom:0}
+ .note b{color:var(--ink);font-weight:600}
+ .note code{font:12.5px var(--mono);background:var(--panel2);
+   border:1px solid var(--line);border-radius:4px;padding:1px 5px;
+   color:var(--gold)}
+ .bar{display:flex;gap:14px;align-items:center;margin:0 0 14px;
+      flex-wrap:wrap}
+ button,select{background:var(--panel2);color:var(--ink);
+   border:1px solid var(--line);border-radius:7px;padding:8px 15px;
+   font:500 13.5px var(--ui);cursor:pointer;transition:border-color .15s}
+ button:hover,select:hover{border-color:var(--faint)}
+ button:focus-visible,select:focus-visible{outline:2px solid var(--gold);
+   outline-offset:2px}
+ #clock{font:500 22px/1 var(--mono);font-variant-numeric:tabular-nums;
+        min-width:76px;color:var(--gold)}
+ #scrub{flex:1;min-width:160px;accent-color:var(--gold);height:4px}
  svg{width:100%;height:auto;display:block;
      image-rendering:pixelated;shape-rendering:crispEdges;
-     border:1px solid var(--line);border-radius:6px}
+     border:1px solid var(--line);border-radius:12px}
  #stage{background:var(--sky)}
- #log{margin-top:10px;height:92px;overflow:auto;background:var(--paper);
-      border:1px solid var(--line);border-radius:6px;padding:8px 11px;
-      font-size:12px;color:var(--dim)}
- #log .hot{color:var(--over)}
- #log .ok{color:var(--good)}
- .foot{color:var(--dim);font-size:11.5px;margin-top:22px;
-       border-top:1px solid var(--line);padding-top:11px}
- @media (max-width:620px){h1{font-size:16px}body{padding:14px 10px 36px}}
+ #log{margin-top:14px;height:116px;overflow:auto;background:var(--panel);
+      border:1px solid var(--line);border-radius:10px;padding:12px 15px;
+      font:13px/1.7 var(--mono);color:var(--dim)}
+ #log div{padding:1px 0}
+ #log .hot{color:var(--over)} #log .ok{color:var(--good)}
+ .cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));
+       gap:10px}
+ .cast+.cast{margin-top:10px}
+ .who2{display:flex;gap:13px;align-items:flex-start;background:var(--panel);
+       border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+ .who2 svg{flex:0 0 30px;width:30px;height:30px;border:0;border-radius:0;
+           background:none;margin-top:1px}
+ .who2 b{font-size:12px;font-weight:700;letter-spacing:.07em;
+         text-transform:uppercase;display:block;margin-bottom:4px}
+ .who2 span{font-size:13px;color:var(--dim);line-height:1.5}
+ .cheat .who2{background:#1c1317;border-color:#3a2127}
+ .cheat b{color:var(--over)}
+ table.contracts{border-collapse:collapse;width:100%;font-size:13.5px}
+ table.contracts th{text-align:left;padding:0 14px 9px 0;font-size:10.5px;
+   font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+   color:var(--faint);border-bottom:1px solid var(--line)}
+ table.contracts td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);
+   vertical-align:top;color:var(--dim)}
+ table.contracts td b{color:var(--ink);font-weight:600;font-size:14px}
+ table.contracts tr:last-child td{border-bottom:0}
+ .pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;
+   text-transform:uppercase;padding:3px 9px;border-radius:999px;
+   white-space:nowrap;border:1px solid}
+ .pill.held{color:var(--good);border-color:#1e4a38;background:#10241c}
+ .pill.broke{color:var(--over);border-color:#4a2320;background:#241312}
+ .pill.open{color:var(--gold);border-color:#4a3a18;background:#241d10}
+ .foot{color:var(--faint);font-size:13px;margin-top:46px;
+       border-top:1px solid var(--line);padding-top:18px;max-width:68ch}
+ a{color:var(--under);text-decoration:none;
+   border-bottom:1px solid rgba(91,157,255,.35)}
+ a:hover{border-bottom-color:var(--under)}
+ @media (max-width:640px){
+   body{padding:28px 16px 48px}
+   .cast{grid-template-columns:1fr}
+   table.contracts th:nth-child(2),table.contracts td:nth-child(2){display:none}
+ }
 </style></head><body>
 
 <h1>FEST TOWN</h1>
 <div class="tag">a college fest, simulated</div>
-<ol class="why">
-<li>Every stall, student, box office, stage and band is its own agent.
-Nothing can see the whole ground.</li>
-<li>Students find stalls from the cards stalls publish, tickets are
-issued, passed on and refunded through a fake payment gateway, students
-rate the stalls they buy from, and bands bid for stage slots.</li>
-<li>A whole fest day plays here in three minutes. Watch people come
-through the gate, pick a stall, and fill the venues.</li>
-</ol>
+<div class="lede">
+<p>Every stall, student, box office, stage and band is <b>its own
+agent</b>, and nothing can see the whole ground. Students find stalls
+from the cards stalls publish, tickets are sold, passed on and refunded
+through a fake payment gateway, bands bid against each other for stage
+slots, and students rate the stalls they bought from.</p>
+<p>A whole fest day plays below in three minutes.</p>
+</div>
 
-<div class="who">
-<p><b>Everything you are watching is scripted.</b> Every stall, student,
-box office, stage and band is a small state machine, which is why a day
-replays exactly from its seed and costs nothing to run.</p>
-<p>One role can be model-driven instead: <code>llm_stall</code> asks a
+<div class="note">
+<p><b>Everything here is scripted, not a model call.</b> Each agent is a
+small state machine, which is why a day replays exactly from its seed
+and costs nothing to run.</p>
+<p>One role can be model-driven instead. <code>llm_stall</code> asks a
 model for its next price every hour, given its own sales, its stock and
-what the stalls either side of it charge. The floor and ceiling are
-clamped in code, so the model picks inside bounds it cannot talk its way
-out of.</p>
-<p>That version runs in its own scenario and not here, because a model
-call per stall per hour makes the day slow and gives up determinism. The
-trace still records every prompt and reply, so the run stays replayable,
-but the same seed stops reproducing the same fest.</p>
+what the stalls either side of it charge, with the floor and ceiling
+clamped in code so it cannot talk its way past them. That version runs
+in its own scenario, because a model call per stall per hour makes the
+day slow and gives up determinism: the trace still records every prompt
+and reply, but the same seed stops reproducing the same fest.</p>
 </div>
 
 <div class="tabs" id="tabs" role="tablist"></div>
@@ -156,31 +168,31 @@ but the same seed stops reproducing the same fest.</p>
 
 <h2>WHO IS IN THE FEST</h2>
 <div class="cast">
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="24" height="4" fill="#e0674f"/><rect x="4" y="10" width="24" height="2" fill="#fff"/><rect x="4" y="12" width="24" height="12" fill="#36405c"/><rect x="8" y="14" width="6" height="6" fill="#cfe2f5"/><rect x="18" y="14" width="6" height="6" fill="#cfe2f5"/><rect x="12" y="24" width="8" height="4" fill="#232b40"/></svg><div><b>STALL</b><span>Sells one kind of food until it runs out, and republishes its card after every sale so the queue is public.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#36405c"/><rect x="6" y="14" width="4" height="8" fill="#36405c"/><rect x="22" y="14" width="4" height="8" fill="#36405c"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>STUDENT</b><span>Arrives, glances at three stalls, buys once, and rates what it got.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="10" width="24" height="14" fill="#6d4b85"/><rect x="6" y="12" width="20" height="10" fill="#fff"/><rect x="8" y="14" width="16" height="2" fill="#8d9ab8"/><rect x="8" y="18" width="10" height="2" fill="#8d9ab8"/><rect x="2" y="10" width="2" height="14" fill="#4a3156"/><rect x="28" y="10" width="2" height="14" fill="#4a3156"/></svg><div><b>BOX OFFICE</b><span>Sells seats in a window, keeps the register of who holds what, takes refunds, admits at the gate.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#6d4b85"/><rect x="22" y="14" width="8" height="6" fill="#fff"/><rect x="22" y="14" width="8" height="2" fill="#8f63b0"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>TICKET HOLDER</b><span>Buys in the morning, might pass the ticket on or return it, turns up at the venue.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="8" width="28" height="4" fill="#6d4b85"/><rect x="4" y="12" width="2" height="2" fill="#f0c04f"/><rect x="10" y="12" width="2" height="2" fill="#f0c04f"/><rect x="16" y="12" width="2" height="2" fill="#f0c04f"/><rect x="22" y="12" width="2" height="2" fill="#f0c04f"/><rect x="26" y="12" width="2" height="2" fill="#f0c04f"/><rect x="4" y="16" width="24" height="10" fill="#3d3152"/><rect x="8" y="18" width="16" height="6" fill="#211a2e"/><rect x="2" y="26" width="28" height="2" fill="#8d9ab8"/></svg><div><b>STAGE</b><span>Publishes its slots, takes bids from bands, awards each one, and holds the money until they play.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="20" y="4" width="6" height="16" fill="#36405c"/><rect x="10" y="16" width="14" height="4" fill="#36405c"/><rect x="6" y="18" width="10" height="10" fill="#36405c"/><rect x="8" y="20" width="6" height="6" fill="#cfe2f5"/><rect x="20" y="4" width="8" height="4" fill="#36405c"/></svg><div><b>BAND</b><span>Bids for the slot it wants, pays into escrow, and has to actually turn up to get paid.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="8" width="24" height="16" fill="#36405c"/><rect x="4" y="12" width="24" height="4" fill="#e0674f"/><rect x="8" y="18" width="8" height="2" fill="#cfe2f5"/><rect x="20" y="18" width="4" height="4" fill="#3f9d6d"/></svg><div><b>GATEWAY</b><span>Takes the money, then confirms it later. Or twice. Or never.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="24" height="4" fill="#ff8a6a"/><rect x="4" y="10" width="24" height="2" fill="#e8eaf2"/><rect x="4" y="12" width="24" height="12" fill="#8b97b5"/><rect x="8" y="14" width="6" height="6" fill="#ffd98a"/><rect x="18" y="14" width="6" height="6" fill="#ffd98a"/><rect x="12" y="24" width="8" height="4" fill="#39425c"/></svg><div><b>STALL</b><span>Sells one kind of food until it runs out, and republishes its card after every sale so the queue is public.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e0b48f"/><rect x="10" y="12" width="12" height="12" fill="#8b97b5"/><rect x="6" y="14" width="4" height="8" fill="#8b97b5"/><rect x="22" y="14" width="4" height="8" fill="#8b97b5"/><rect x="12" y="24" width="4" height="6" fill="#5a6480"/><rect x="18" y="24" width="4" height="6" fill="#5a6480"/></svg><div><b>STUDENT</b><span>Arrives, glances at three stalls, buys once, and rates what it got.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="10" width="24" height="14" fill="#9a6fc0"/><rect x="6" y="12" width="20" height="10" fill="#e8eaf2"/><rect x="8" y="14" width="16" height="2" fill="#5a6480"/><rect x="8" y="18" width="10" height="2" fill="#5a6480"/><rect x="2" y="10" width="2" height="14" fill="#6d4b85"/><rect x="28" y="10" width="2" height="14" fill="#6d4b85"/></svg><div><b>BOX OFFICE</b><span>Sells seats in a window, keeps the register of who holds what, takes refunds, admits at the gate.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e0b48f"/><rect x="10" y="12" width="12" height="12" fill="#9a6fc0"/><rect x="22" y="14" width="8" height="6" fill="#e8eaf2"/><rect x="22" y="14" width="8" height="2" fill="#c9a9e0"/><rect x="12" y="24" width="4" height="6" fill="#5a6480"/><rect x="18" y="24" width="4" height="6" fill="#5a6480"/></svg><div><b>TICKET HOLDER</b><span>Buys in the morning, might pass the ticket on or return it, turns up at the venue.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="8" width="28" height="4" fill="#9a6fc0"/><rect x="4" y="12" width="2" height="2" fill="#ffc44d"/><rect x="10" y="12" width="2" height="2" fill="#ffc44d"/><rect x="16" y="12" width="2" height="2" fill="#ffc44d"/><rect x="22" y="12" width="2" height="2" fill="#ffc44d"/><rect x="26" y="12" width="2" height="2" fill="#ffc44d"/><rect x="4" y="16" width="24" height="10" fill="#4a3a66"/><rect x="8" y="18" width="16" height="6" fill="#1b1428"/><rect x="2" y="26" width="28" height="2" fill="#5a6480"/></svg><div><b>STAGE</b><span>Publishes its slots, takes bids from bands, awards each one, and holds the money until they play.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="20" y="4" width="6" height="16" fill="#8b97b5"/><rect x="10" y="16" width="14" height="4" fill="#8b97b5"/><rect x="6" y="18" width="10" height="10" fill="#8b97b5"/><rect x="8" y="20" width="6" height="6" fill="#ffd98a"/><rect x="20" y="4" width="8" height="4" fill="#8b97b5"/></svg><div><b>BAND</b><span>Bids for the slot it wants, pays into escrow, and has to actually turn up to get paid.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="8" width="24" height="16" fill="#8b97b5"/><rect x="4" y="12" width="24" height="4" fill="#ff8a6a"/><rect x="8" y="18" width="8" height="2" fill="#ffd98a"/><rect x="20" y="18" width="4" height="4" fill="#3ddc97"/></svg><div><b>GATEWAY</b><span>Takes the money, then confirms it later. Or twice. Or never.</span></div></div>
 </div>
 <div class="cast cheat">
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="24" height="4" fill="#cf4233"/><rect x="4" y="10" width="24" height="2" fill="#fff"/><rect x="4" y="12" width="24" height="12" fill="#36405c"/><rect x="8" y="14" width="6" height="6" fill="#cf4233"/><rect x="18" y="14" width="6" height="6" fill="#cf4233"/><rect x="12" y="24" width="8" height="4" fill="#232b40"/></svg><div><b>SMEAR STALL</b><span>Sells like any other stall, and rates its rivals down twenty five times.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#cf4233"/><rect x="6" y="14" width="4" height="8" fill="#cf4233"/><rect x="22" y="14" width="4" height="8" fill="#cf4233"/><rect x="4" y="2" width="12" height="8" fill="#fff"/><rect x="4" y="2" width="12" height="2" fill="#cf4233"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>SHILL</b><span>Praises one stall over and over. Never queues, never pays, never eats.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#cf4233"/><rect x="22" y="14" width="8" height="8" fill="#f0c04f"/><rect x="24" y="16" width="4" height="4" fill="#cf4233"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>VOTE BUYER</b><span>Buys the cheapest thing at the fest to earn a vote, then spends it on a stall it never visited.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#cf4233"/><rect x="22" y="14" width="8" height="6" fill="#fff"/><rect x="22" y="14" width="8" height="2" fill="#cf4233"/><rect x="2" y="14" width="8" height="6" fill="#fff"/><rect x="2" y="14" width="8" height="2" fill="#cf4233"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>TICKET CHEAT</b><span>Tries to pass on a ticket it does not hold, and to walk in twice on one.</span></div></div>
-<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="20" y="4" width="6" height="16" fill="#cf4233"/><rect x="10" y="16" width="14" height="4" fill="#cf4233"/><rect x="6" y="18" width="10" height="10" fill="#cf4233"/><rect x="8" y="20" width="6" height="6" fill="#fff"/><rect x="20" y="4" width="8" height="4" fill="#cf4233"/></svg><div><b>GREEDY BAND</b><span>Bids on every slot at once, bids below zero, and walks on stage it did not win.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="24" height="4" fill="#ff6b5a"/><rect x="4" y="10" width="24" height="2" fill="#e8eaf2"/><rect x="4" y="12" width="24" height="12" fill="#8b97b5"/><rect x="8" y="14" width="6" height="6" fill="#ff6b5a"/><rect x="18" y="14" width="6" height="6" fill="#ff6b5a"/><rect x="12" y="24" width="8" height="4" fill="#39425c"/></svg><div><b>SMEAR STALL</b><span>Sells like any other stall, and rates its rivals down twenty five times.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e0b48f"/><rect x="10" y="12" width="12" height="12" fill="#ff6b5a"/><rect x="6" y="14" width="4" height="8" fill="#ff6b5a"/><rect x="22" y="14" width="4" height="8" fill="#ff6b5a"/><rect x="4" y="2" width="12" height="8" fill="#e8eaf2"/><rect x="4" y="2" width="12" height="2" fill="#ff6b5a"/><rect x="12" y="24" width="4" height="6" fill="#5a6480"/><rect x="18" y="24" width="4" height="6" fill="#5a6480"/></svg><div><b>SHILL</b><span>Praises one stall over and over. Never queues, never pays, never eats.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e0b48f"/><rect x="10" y="12" width="12" height="12" fill="#ff6b5a"/><rect x="22" y="14" width="8" height="8" fill="#ffc44d"/><rect x="24" y="16" width="4" height="4" fill="#ff6b5a"/><rect x="12" y="24" width="4" height="6" fill="#5a6480"/><rect x="18" y="24" width="4" height="6" fill="#5a6480"/></svg><div><b>VOTE BUYER</b><span>Buys the cheapest thing at the fest to earn a vote, then spends it on a stall it never visited.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e0b48f"/><rect x="10" y="12" width="12" height="12" fill="#ff6b5a"/><rect x="22" y="14" width="8" height="6" fill="#e8eaf2"/><rect x="22" y="14" width="8" height="2" fill="#ff6b5a"/><rect x="2" y="14" width="8" height="6" fill="#e8eaf2"/><rect x="2" y="14" width="8" height="2" fill="#ff6b5a"/><rect x="12" y="24" width="4" height="6" fill="#5a6480"/><rect x="18" y="24" width="4" height="6" fill="#5a6480"/></svg><div><b>TICKET CHEAT</b><span>Tries to pass on a ticket it does not hold, and to walk in twice on one.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="20" y="4" width="6" height="16" fill="#ff6b5a"/><rect x="10" y="16" width="14" height="4" fill="#ff6b5a"/><rect x="6" y="18" width="10" height="10" fill="#ff6b5a"/><rect x="8" y="20" width="6" height="6" fill="#e8eaf2"/><rect x="20" y="4" width="8" height="4" fill="#ff6b5a"/></svg><div><b>GREEDY BAND</b><span>Bids on every slot at once, bids below zero, and walks on stage it did not win.</span></div></div>
 </div>
 
 <h2>WHAT KIND OF PROMISE EACH ONE MAKES</h2>
 <table class="contracts">
 <tr><th>contract</th><th>the promise</th><th>what the run showed</th><th></th></tr>
-<tr><td><b>Purchase</b></td><td>Hand over money, get the thing, both at once</td><td>Every sale settled, nothing sold from an empty stall</td><td class="held">held</td></tr>
-<tr><td><b>Transfer</b></td><td>A claim handed to somebody else, who can use it</td><td>Every transfer made by whoever actually held the ticket</td><td class="held">held</td></tr>
-<tr><td><b>Refund</b></td><td>Unwinding a deal that already completed</td><td>Who gets the money when the holder is not the payer</td><td class="broke">open question</td></tr>
-<tr><td><b>Delayed settlement</b></td><td>Pay a third party who confirms later</td><td>A lost confirmation leaves a fan paid up with no ticket</td><td class="broke">broke</td></tr>
-<tr><td><b>Auction</b></td><td>The right to a future slot, money held until you deliver</td><td>Three slots of eight went empty with live bids on them</td><td class="broke">broke</td></tr>
-<tr><td><b>Reputation</b></td><td>Saying something about someone that changes what they earn</td><td>A vote costs one purchase of the cheapest item on the ground</td><td class="broke">broke</td></tr>
+<tr><td><b>Purchase</b></td><td>Hand over money, get the thing, both at once</td><td>Every sale settled, nothing sold from an empty stall</td><td><span class="pill held">held</span></td></tr>
+<tr><td><b>Transfer</b></td><td>A claim handed to somebody else, who can use it</td><td>Every transfer made by whoever actually held the ticket</td><td><span class="pill held">held</span></td></tr>
+<tr><td><b>Refund</b></td><td>Unwinding a deal that already completed</td><td>Who gets the money when the holder is not the payer</td><td><span class="pill open">open</span></td></tr>
+<tr><td><b>Delayed settlement</b></td><td>Pay a third party who confirms later</td><td>A lost confirmation leaves a fan paid up with no ticket</td><td><span class="pill broke">broke</span></td></tr>
+<tr><td><b>Auction</b></td><td>The right to a future slot, money held until you deliver</td><td>Three slots of eight went empty with live bids on them</td><td><span class="pill broke">broke</span></td></tr>
+<tr><td><b>Reputation</b></td><td>Saying something about someone that changes what they earn</td><td>A vote costs one purchase of the cheapest item on the ground</td><td><span class="pill broke">broke</span></td></tr>
 </table>
 <div class="legend">Six different shapes of agreement, not six features. Each
 one can fail in a way the others cannot, and four of the six did.</div>
@@ -195,7 +207,8 @@ const NS = 'http://www.w3.org/2000/svg';
 const REAL = 180;                             // 3 minutes at 1x
 const W = 960, PX = 4, pad = 26;
 const BASE = 300, GATE = 382;
-const OVER = '#cf4233', UNDER = '#2f6fc4', INK = '#1b1d24', DIM = '#6d7283';
+const OVER = '#ff6b5a', UNDER = '#5b9dff', INK = '#eef1f7', DIM = '#949db4';
+const WARM = '#ffd98a', GOLD = '#ffc44d';
 
 const svg = document.getElementById('stage');
 const log = document.getElementById('log');
@@ -212,22 +225,26 @@ function clear(node){while(node.firstChild) node.removeChild(node.firstChild);}
 
 function stall(g,cx,base,w,hue){
   const bw = Math.min(w-18,108), x = cx-bw/2;
+  // a lit stall at night: striped awning, warm windows, a lantern
   for(let i=0;i<bw/PX;i+=2)
-    px(g,x+i*PX,base-118,2,5,i%4===0?hue:'#ffffff');
-  px(g,x,base-98,bw/PX,24,'#36405c');
-  px(g,x,base-98,bw/PX,2,'#55628a');
-  px(g,x+3*PX,base-86,5,5,'#cfe2f5');
-  px(g,x+bw-9*PX,base-86,5,5,'#cfe2f5');
-  px(g,cx-3*PX,base-50,6,12,'#232b40');
-  px(g,cx-1*PX,base-138,2,5,'#8d9ab8');
+    px(g,x+i*PX,base-118,2,5,i%4===0?hue:'#e8e2d4');
+  px(g,x,base-98,bw/PX,24,'#2b3346');
+  px(g,x,base-98,bw/PX,2,hue);
+  px(g,x+3*PX,base-86,5,5,WARM);
+  px(g,x+bw-9*PX,base-86,5,5,WARM);
+  px(g,x+2*PX,base-62,(bw/PX)-4,1,'#3c4660');
+  px(g,cx-3*PX,base-50,6,12,'#141a28');
+  px(g,cx-1*PX,base-138,2,5,'#4a5570');
+  px(g,cx-1*PX,base-140,2,2,GOLD);
 }
 function stageBox(g,cx,base,w){
   const bw = Math.min(w-14,128), x = cx-bw/2;
-  px(g,x,base-74,bw/PX,4,'#6d4b85');
-  for(let i=1;i<bw/PX;i+=3) px(g,x+i*PX,base-70,1,1,'#f0c04f');
-  px(g,x+2*PX,base-58,(bw/PX)-4,14,'#3d3152');
-  px(g,x+5*PX,base-52,(bw/PX)-10,9,'#211a2e');
-  px(g,x,base-6,bw/PX,2,'#8d9ab8');
+  px(g,x,base-74,bw/PX,4,'#59406f');
+  for(let i=1;i<bw/PX;i+=3) px(g,x+i*PX,base-70,1,1,GOLD);
+  px(g,x+2*PX,base-58,(bw/PX)-4,14,'#2b2340');
+  px(g,x+5*PX,base-52,(bw/PX)-10,9,'#15101f');
+  px(g,x+6*PX,base-50,(bw/PX)-12,1,'#4a3a66');
+  px(g,x,base-6,bw/PX,2,'#4a5570');
 }
 
 /* ---------------------------------------------- state per run ----- */
@@ -241,14 +258,14 @@ function scene(run){
   boxes = {}; venues = {}; dots = [];
   clear(svg); log.innerHTML = '';
 
-  el('rect',{x:0,y:BASE,width:W,height:400-BASE,fill:'#e8dfcb'},svg);
-  el('rect',{x:0,y:BASE,width:W,height:2,fill:'#cfc4a8'},svg);
+  el('rect',{x:0,y:BASE,width:W,height:400-BASE,fill:'#171410'},svg);
+  el('rect',{x:0,y:BASE,width:W,height:2,fill:'#2e2820'},svg);
 
   (D.shows||[]).forEach((v,i)=>{
     const n = D.shows.length, sw = (W-pad*2)/n;
     const x = pad + i*sw + sw/2, g = el('g',{},svg);
     stageBox(g,x,92,sw);
-    label(g,x,20,v.name.toUpperCase(),9,'#6d4b85');
+    label(g,x,20,v.name.toUpperCase(),9,'#c9a9e0');
     venues[v.name]={x,seats:label(g,x,106,'0/'+v.capacity,9,DIM),
                     sold:0,cap:v.capacity};
   });
@@ -285,7 +302,7 @@ function fmt(lt){const m=Math.round(ALL.t0*60+lt*ALL.mins);
          String(Math.round(m%60)).padStart(2,'0');}
 function apply(e){
   const b=boxes[e.s];
-  if(e.k==='considered' && b){ walker(b.x,BASE+14,'#36405c'); }
+  if(e.k==='considered' && b){ walker(b.x,BASE+14,'#cfd6e6'); }
   else if(e.k==='bought' && b){ b.n++; totalSales++;
     b.sold.textContent=b.n+' sold'; }
   else if(e.k==='ticket'){const v=venues[e.s];
@@ -294,7 +311,7 @@ function apply(e){
     if(v){v.sold=Math.max(0,v.sold-1); v.seats.textContent=v.sold+'/'+v.cap;}
     say(fmt(e.t)+'  '+e.m);}
   else if(e.k==='enter'){const v=venues[e.s];
-    if(v) walker(v.x,116,'#6d4b85');}
+    if(v) walker(v.x,116,'#c9a9e0');}
   else if(e.k==='attack'){ say(fmt(e.t)+'  '+e.m,'hot'); }
   else if(e.k==='note'){ say(fmt(e.t)+'  '+e.m,'ok'); }
 }
@@ -351,7 +368,7 @@ requestAnimationFrame(frame);
 </script></body></html>
 """
 
-HUES = ["#e0674f", "#c98b1b", "#3f9d6d", "#3f7fc4", "#8f63b0",
+HUES = ["#ff8a6a", "#c98b1b", "#3f9d6d", "#3f7fc4", "#c9a9e0",
         "#c4648f", "#6fa345", "#a89425", "#3fa79a"]
 
 
