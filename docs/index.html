@@ -73,6 +73,22 @@
  .who2 span{font-size:13px;color:var(--dim);line-height:1.5}
  .cheat .who2{background:#1c1317;border-color:#3a2127}
  .cheat b{color:var(--over)}
+ table.result{border-collapse:collapse;width:100%;font-size:13.5px}
+ table.result th{text-align:right;padding:0 0 9px 14px;font-size:10.5px;
+   font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+   color:var(--faint);border-bottom:1px solid var(--line);white-space:nowrap}
+ table.result th:first-child,table.result td:first-child{text-align:left;
+   padding-left:0}
+ table.result th.grp{color:var(--ink);border-bottom-color:var(--faint)}
+ table.result td{padding:11px 0 11px 14px;text-align:right;
+   border-bottom:1px solid var(--line);color:var(--dim);
+   font-variant-numeric:tabular-nums}
+ table.result td b{color:var(--ink);font-weight:600}
+ table.result td i{font-style:normal;color:var(--faint);font-size:12px}
+ table.result td.q{color:var(--ink)}
+ table.result td.hi{color:var(--over);font-weight:700}
+ table.result td.lo{color:var(--under)}
+ table.result tr:last-child td{border-bottom:0}
  table.contracts{border-collapse:collapse;width:100%;font-size:13.5px}
  table.contracts th{text-align:left;padding:0 14px 9px 0;font-size:10.5px;
    font-weight:600;letter-spacing:.14em;text-transform:uppercase;
@@ -173,6 +189,35 @@ and reply, but the same seed stops reproducing the same fest.</p>
 </table>
 <div class="legend">Six different shapes of agreement, not six features. Each
 one can fail in a way the others cannot, and four of the six did.</div>
+
+<h2>THE SAME DAY, TWICE</h2>
+<table class="result">
+<tr><th>stall</th><th>food quality</th>
+    <th class="grp">rating</th><th class="grp">sales</th>
+    <th>rating</th><th>sales</th></tr>
+<tr><th></th><th></th>
+    <th class="grp" colspan="2">anyone can rate</th>
+    <th colspan="2">only buyers can rate</th></tr>
+<tr><td><b>burger-1</b></td><td class="q">0.85</td><td class="lo">-8</td><td class="lo">0&nbsp;&nbsp;<i>0%</i></td><td class="hi">35</td><td class="hi">47&nbsp;&nbsp;<i>39%</i></td></tr>
+<tr><td><b>ice-cream-1</b></td><td class="q">0.75</td><td>-6</td><td class="lo">0&nbsp;&nbsp;<i>0%</i></td><td>9</td><td>19&nbsp;&nbsp;<i>16%</i></td></tr>
+<tr><td><b>burger-2</b></td><td class="q">0.65</td><td>2</td><td>20&nbsp;&nbsp;<i>17%</i></td><td>7</td><td>29&nbsp;&nbsp;<i>24%</i></td></tr>
+<tr><td><b>ice-cream-2</b></td><td class="q">0.55</td><td>4</td><td>29&nbsp;&nbsp;<i>24%</i></td><td>-3</td><td>3&nbsp;&nbsp;<i>2%</i></td></tr>
+<tr><td><b>burger-3</b></td><td class="q">0.45</td><td class="hi">31</td><td class="hi">59&nbsp;&nbsp;<i>49%</i></td><td>-3</td><td>13&nbsp;&nbsp;<i>11%</i></td></tr>
+<tr><td><b>bake-sale</b></td><td class="q">0.35</td><td>-4</td><td>12&nbsp;&nbsp;<i>10%</i></td><td>-1</td><td>9&nbsp;&nbsp;<i>8%</i></td></tr>
+</table>
+<div class="note">
+<p>On the left, the food gets worse as you read down and the sales go
+<b>up</b>. The worst stall at the fest took half the trade. The best one
+sold nothing all day and finished on minus eight, because it had been
+rated down by a rival and nobody checks whether a reviewer ever bought
+anything.</p>
+<p>On the right, one component is different: a rating only counts from
+someone who actually paid that stall. Same seed, same crowd, same
+attack. The order comes back.</p>
+<p>Every money check passed in <b>both</b> runs. Nothing oversold, no
+ticket moved by the wrong person, every cent accounted for. Nothing is
+broken on the left. It is just wrong.</p>
+</div>
 
 <div class="foot">Built from one run's evidence bundle, with no server and
 no network behind it. Code and scenarios:
