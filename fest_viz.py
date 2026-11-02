@@ -53,6 +53,27 @@ PAGE = """<!DOCTYPE html>
  .who b{color:var(--ink);font-weight:700}
  .who code{background:var(--paper);border:1px solid var(--line);
    border-radius:3px;padding:0 3px;font-size:11.5px}
+ .cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(216px,1fr));
+       gap:9px;margin-bottom:6px}
+ .who2{display:flex;gap:9px;align-items:flex-start;background:var(--paper);
+       border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+ .who2 svg{flex:0 0 28px;width:28px;height:28px;border:0;border-radius:0;
+           background:none}
+ .who2 b{font-family:var(--px);font-size:9.5px;letter-spacing:.5px;
+         display:block;margin-bottom:2px}
+ .who2 span{font-size:11.5px;color:var(--dim);line-height:1.4}
+ .cheat .who2{background:#fdf4f2;border-color:#f0cfc8}
+ .cheat b{color:var(--over)}
+ table.contracts{border-collapse:collapse;width:100%;font-size:12.5px;
+   margin-bottom:6px}
+ table.contracts th,table.contracts td{text-align:left;padding:6px 9px;
+   border-bottom:1px solid var(--line);vertical-align:top}
+ table.contracts th{font-family:var(--px);font-size:9px;letter-spacing:1px;
+   color:var(--dim);font-weight:400}
+ td.held{color:#1f7a4d;white-space:nowrap}
+ td.broke{color:var(--over);white-space:nowrap}
+ @media (max-width:560px){.cast{grid-template-columns:1fr}
+   table.contracts th:nth-child(2),table.contracts td:nth-child(2){display:none}}
  h2{font-family:var(--px);font-size:10px;font-weight:400;letter-spacing:2px;
     color:var(--dim);margin:16px 0 6px}
  .tabs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
@@ -132,6 +153,37 @@ but the same seed stops reproducing the same fest.</p>
      avenue, people walking up from the gate to the stall they picked."></svg>
 
 <div id="log"></div>
+
+<h2>WHO IS IN THE FEST</h2>
+<div class="cast">
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="24" height="4" fill="#e0674f"/><rect x="4" y="10" width="24" height="2" fill="#fff"/><rect x="4" y="12" width="24" height="12" fill="#36405c"/><rect x="8" y="14" width="6" height="6" fill="#cfe2f5"/><rect x="18" y="14" width="6" height="6" fill="#cfe2f5"/><rect x="12" y="24" width="8" height="4" fill="#232b40"/></svg><div><b>STALL</b><span>Sells one kind of food until it runs out, and republishes its card after every sale so the queue is public.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#36405c"/><rect x="6" y="14" width="4" height="8" fill="#36405c"/><rect x="22" y="14" width="4" height="8" fill="#36405c"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>STUDENT</b><span>Arrives, glances at three stalls, buys once, and rates what it got.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="10" width="24" height="14" fill="#6d4b85"/><rect x="6" y="12" width="20" height="10" fill="#fff"/><rect x="8" y="14" width="16" height="2" fill="#8d9ab8"/><rect x="8" y="18" width="10" height="2" fill="#8d9ab8"/><rect x="2" y="10" width="2" height="14" fill="#4a3156"/><rect x="28" y="10" width="2" height="14" fill="#4a3156"/></svg><div><b>BOX OFFICE</b><span>Sells seats in a window, keeps the register of who holds what, takes refunds, admits at the gate.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#6d4b85"/><rect x="22" y="14" width="8" height="6" fill="#fff"/><rect x="22" y="14" width="8" height="2" fill="#8f63b0"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>TICKET HOLDER</b><span>Buys in the morning, might pass the ticket on or return it, turns up at the venue.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="8" width="28" height="4" fill="#6d4b85"/><rect x="4" y="12" width="2" height="2" fill="#f0c04f"/><rect x="10" y="12" width="2" height="2" fill="#f0c04f"/><rect x="16" y="12" width="2" height="2" fill="#f0c04f"/><rect x="22" y="12" width="2" height="2" fill="#f0c04f"/><rect x="26" y="12" width="2" height="2" fill="#f0c04f"/><rect x="4" y="16" width="24" height="10" fill="#3d3152"/><rect x="8" y="18" width="16" height="6" fill="#211a2e"/><rect x="2" y="26" width="28" height="2" fill="#8d9ab8"/></svg><div><b>STAGE</b><span>Publishes its slots, takes bids from bands, awards each one, and holds the money until they play.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="20" y="4" width="6" height="16" fill="#36405c"/><rect x="10" y="16" width="14" height="4" fill="#36405c"/><rect x="6" y="18" width="10" height="10" fill="#36405c"/><rect x="8" y="20" width="6" height="6" fill="#cfe2f5"/><rect x="20" y="4" width="8" height="4" fill="#36405c"/></svg><div><b>BAND</b><span>Bids for the slot it wants, pays into escrow, and has to actually turn up to get paid.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="8" width="24" height="16" fill="#36405c"/><rect x="4" y="12" width="24" height="4" fill="#e0674f"/><rect x="8" y="18" width="8" height="2" fill="#cfe2f5"/><rect x="20" y="18" width="4" height="4" fill="#3f9d6d"/></svg><div><b>GATEWAY</b><span>Takes the money, then confirms it later. Or twice. Or never.</span></div></div>
+</div>
+<div class="cast cheat">
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="6" width="24" height="4" fill="#cf4233"/><rect x="4" y="10" width="24" height="2" fill="#fff"/><rect x="4" y="12" width="24" height="12" fill="#36405c"/><rect x="8" y="14" width="6" height="6" fill="#cf4233"/><rect x="18" y="14" width="6" height="6" fill="#cf4233"/><rect x="12" y="24" width="8" height="4" fill="#232b40"/></svg><div><b>SMEAR STALL</b><span>Sells like any other stall, and rates its rivals down twenty five times.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#cf4233"/><rect x="6" y="14" width="4" height="8" fill="#cf4233"/><rect x="22" y="14" width="4" height="8" fill="#cf4233"/><rect x="4" y="2" width="12" height="8" fill="#fff"/><rect x="4" y="2" width="12" height="2" fill="#cf4233"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>SHILL</b><span>Praises one stall over and over. Never queues, never pays, never eats.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#cf4233"/><rect x="22" y="14" width="8" height="8" fill="#f0c04f"/><rect x="24" y="16" width="4" height="4" fill="#cf4233"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>VOTE BUYER</b><span>Buys the cheapest thing at the fest to earn a vote, then spends it on a stall it never visited.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="12" y="4" width="8" height="8" fill="#e8b89a"/><rect x="10" y="12" width="12" height="12" fill="#cf4233"/><rect x="22" y="14" width="8" height="6" fill="#fff"/><rect x="22" y="14" width="8" height="2" fill="#cf4233"/><rect x="2" y="14" width="8" height="6" fill="#fff"/><rect x="2" y="14" width="8" height="2" fill="#cf4233"/><rect x="12" y="24" width="4" height="6" fill="#8d9ab8"/><rect x="18" y="24" width="4" height="6" fill="#8d9ab8"/></svg><div><b>TICKET CHEAT</b><span>Tries to pass on a ticket it does not hold, and to walk in twice on one.</span></div></div>
+<div class="who2"><svg viewBox="0 0 32 32" shape-rendering="crispEdges" aria-hidden="true"><rect x="20" y="4" width="6" height="16" fill="#cf4233"/><rect x="10" y="16" width="14" height="4" fill="#cf4233"/><rect x="6" y="18" width="10" height="10" fill="#cf4233"/><rect x="8" y="20" width="6" height="6" fill="#fff"/><rect x="20" y="4" width="8" height="4" fill="#cf4233"/></svg><div><b>GREEDY BAND</b><span>Bids on every slot at once, bids below zero, and walks on stage it did not win.</span></div></div>
+</div>
+
+<h2>WHAT KIND OF PROMISE EACH ONE MAKES</h2>
+<table class="contracts">
+<tr><th>contract</th><th>the promise</th><th>what the run showed</th><th></th></tr>
+<tr><td><b>Purchase</b></td><td>Hand over money, get the thing, both at once</td><td>Every sale settled, nothing sold from an empty stall</td><td class="held">held</td></tr>
+<tr><td><b>Transfer</b></td><td>A claim handed to somebody else, who can use it</td><td>Every transfer made by whoever actually held the ticket</td><td class="held">held</td></tr>
+<tr><td><b>Refund</b></td><td>Unwinding a deal that already completed</td><td>Who gets the money when the holder is not the payer</td><td class="broke">open question</td></tr>
+<tr><td><b>Delayed settlement</b></td><td>Pay a third party who confirms later</td><td>A lost confirmation leaves a fan paid up with no ticket</td><td class="broke">broke</td></tr>
+<tr><td><b>Auction</b></td><td>The right to a future slot, money held until you deliver</td><td>Three slots of eight went empty with live bids on them</td><td class="broke">broke</td></tr>
+<tr><td><b>Reputation</b></td><td>Saying something about someone that changes what they earn</td><td>A vote costs one purchase of the cheapest item on the ground</td><td class="broke">broke</td></tr>
+</table>
+<div class="legend">Six different shapes of agreement, not six features. Each
+one can fail in a way the others cannot, and four of the six did.</div>
 
 <div class="foot">Built from one run's evidence bundle, with no server and
 no network behind it. Code and scenarios:
